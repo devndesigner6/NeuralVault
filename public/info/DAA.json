@@ -1,0 +1,147 @@
+[
+  {
+    "name": "Design and Analysis of Algorithms",
+    "code": "AM501PC",
+    "units": [
+      {
+        "name": "UNIT - 1: Introduction and Divide and Conquer",
+        "topics": [
+          {
+            "topic": "Introduction",
+            "subTopics": [
+              "Algorithm",
+              "Performance Analysis: Space complexity, Time complexity",
+              "Asymptotic Notations: Big Oh notation, Omega notation, Theta notation, Little Oh notation"
+            ]
+          },
+          {
+            "topic": "Divide and Conquer",
+            "subTopics": [
+              "General method",
+              "Applications: Binary search, Quick sort, Merge sort, Strassen’s matrix multiplication"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "UNIT - 2: Disjoint Sets and Priority Queue",
+        "topics": [
+          {
+            "topic": "Disjoint Sets",
+            "subTopics": [
+              "Disjoint set operations",
+              "Union and find algorithms"
+            ]
+          },
+          {
+            "topic": "Priority Queue",
+            "subTopics": ["Heaps", "Heapsort"]
+          },
+          {
+            "topic": "Backtracking",
+            "subTopics": [
+              "General method",
+              "Applications: n-queen’s problem, Sum of subsets problem, Graph coloring, Hamiltonian cycles"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "UNIT - 3: Dynamic Programming",
+        "topics": [
+          {
+            "topic": "Dynamic Programming",
+            "subTopics": [
+              "General method",
+              "Applications: Optimal binary search tree, 0/1 knapsack problem, All pairs shortest path problem, Traveling salesperson problem, Reliability design"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "UNIT - 4: Greedy Method, Basic Traversal and Search Techniques",
+        "topics": [
+          {
+            "topic": "Greedy Method",
+            "subTopics": [
+              "General method",
+              "Applications: Job sequencing with deadlines, Knapsack problem, Minimum cost spanning trees, Single source shortest path problem"
+            ]
+          },
+          {
+            "topic": "Basic Traversal and Search Techniques",
+            "subTopics": [
+              "Techniques for Binary Trees",
+              "Techniques for Graphs: Connected components, Biconnected components"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "UNIT - 5: Branch and Bound, NP-Hard and NP-Complete Problems",
+        "topics": [
+          {
+            "topic": "Branch and Bound",
+            "subTopics": [
+              "General method",
+              "Applications: Traveling salesperson problem, 0/1 knapsack problem: LC Branch and Bound solution, FIFO Branch and Bound solution"
+            ]
+          },
+          {
+            "topic": "NP-Hard and NP-Complete Problems",
+            "subTopics": [
+              "Basic concepts",
+              "Non-deterministic algorithms",
+              "NP-Hard and NP-Complete classes",
+              "Cook’s theorem"
+            ]
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "name": "DAA Unit 1: Introduction and Divide and Conquer",
+        "link": "./resources/3rd Year/DAA Unit 1.pdf"
+      },
+      {
+        "name": "DAA Unit 2: Disjoint Sets And Priority Queue",
+        "link": "./resources/3rd Year/DAA Unit 2.pdf"
+      },
+      {
+        "name": "DAA Unit 3: Dynamic Programming",
+        "link": "./resources/3rd Year/DAA Unit 3.pdf"
+      },
+      {
+        "name": "DAA Unit 4: Greedy Method, Basic Traversal and Search Techniques",
+        "link": "./resources/3rd Year/DAA Unit 4.pdf"
+      },
+      {
+        "name": "DAA Unit 5: Branch And Bound, Np-hard And Np-complete Problems",
+        "link": "./resources/3rd Year/DAA Unit 5.pdf"
+      },
+      {
+        "name": "DAA Unit 1 (alt): Introduction and Divide and Conquer",
+        "link": "./resources/3rd Year/DAA Unit 1 alt.pdf"
+      },
+      {
+        "name": "DAA Unit 1 (alt OBS): Introduction and Divide and Conquer",
+        "link": "./resources/3rd Year/DAA Unit 1 OBS.pdf"
+      },
+    
+      {
+        "name": "DAA Unit 2 (alt): Disjoint Sets And Priority Queue",
+        "link": "./resources/3rd Year/DAA Unit 2 OBS.pdf"
+      },
+      {
+        "name": "DAA Unit 3 (alt): Dynamic Programming",
+        "link": "./resources/3rd Year/DAA Unit 3 alt.pdf"
+      },
+     
+      {
+        "name": "DAA Unit 1: Assignment",
+        "link": "./resources/3rd Year/DAA Assignment 1.pdf"
+      }
+    ]
+  }
+]
