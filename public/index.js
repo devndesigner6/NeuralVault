@@ -1,186 +1,99 @@
+console.log("Script loaded!");
+
 $(document).ready(function () {
-    $(".table").fadeIn();
-    function getUrlParameter(name) {
-      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-      var results = regex.exec(location.search);
-      return results === null
-        ? ""
-        : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-    var codeValue = getUrlParameter("code");
-    console.log("code param:", codeValue);
-    if (!codeValue) {
-      $('h2').text('Error fetching details');
-      $('table').hide();
-      console.error('Missing ?code= param in URL');
+  console.log("jQuery ready!");
+  
+  function displaySubjects(subjects) {
+    console.log("Displaying subjects:", subjects.length);
+    $(".subjects").empty();
+    
+    if (!subjects || subjects.length === 0) {
+      $(".subjects").html('<div class="subject"><p>No subjects found</p></div>');
       return;
     }
-    $(".title").text(codeValue);
-    // Use absolute path from Vercel root: /public is the output directory, so /info is accessible as /info
-    var filePath = "/info/" + codeValue + ".json";
-    console.log("Attempting to load:", filePath);
-    $.getJSON(filePath, function (data) {
-      var fileName = casing(data[0].name);
+    
+    $.each(subjects, function (index, subject) {
+      var $newSubject = $(
+        '<div class="click ' + subject.code + ' subject"></div>'
+      );
+      $newSubject.append("<h1>" + subject.name + "</h1>");
+      var $tagsDiv = $('<div class="tags"></div>');
 
-      function casing(string) {
-        return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
-          return a.toUpperCase();
-        });
-      }
-      console.log(data);
-      console.log(data);
-      console.log(fileName);
-      $(".title").text(data[0].code + ": " + fileName);
-
-      var unitTableBody = $("#unitTableBody");
-      $.each(data[0].units, function (index, unit) {
-        var row = $("<tr></tr>");
-        row.append("<td>" + casing(unit.name) + "</td>");
-        if (data[0].syllabus == true) {
-          $('th:contains("Syllabus")').remove();
-        }
-        !data[0].syllabus &&
-          row.append(
-            '<td><a class="unitLink" data-index="' +
-              index +
-              '">' +
-              "View Syllabus</a></td>"
-          );
-        unitTableBody.append(row);
-      });
-      $(".unitLink").click(function () {
-        var index = $(this).data("index");
-        var unit = data[0].units[index];
-        var unitInfo = $("#unitInfo");
-        unitInfo.empty();
-        unitInfo.append("<h3>" + unit.name + "</h3>");
-        var topicsList = $("<ul></ul>");
-        $.each(unit.topics, function (index, topic) {
-          var topicItem = $("<li>" + topic.topic + "</li>");
-          var subTopicsList = $("<ul></ul>");
-          $.each(topic.subTopics, function (index, subTopic) {
-            subTopicsList.append("<li>" + subTopic + "</li>");
-          });
-          topicItem.append(subTopicsList);
-          topicsList.append(topicItem);
-        });
-        unitInfo.append(topicsList);
-        $(".info").fadeIn();
-        var infoElement = $(".info");
-        $("html, body").animate(
-          {
-            scrollTop: infoElement.offset().top,
-          },
-          200
+      if (subject.year && subject.sem) {
+        $newSubject.append(
+          "<p>Year " + subject.year + " Sem " + subject.sem + "</p>"
         );
+      }
+      if (subject.credits) {
+        $newSubject.append("<p>Credits: " + subject.credits + "</p>");
+      }
+
+      $.each(subject.tags, function (i, tag) {
+        $tagsDiv.append("<p>#" + tag + "</p>");
+      });
+      $newSubject.append($tagsDiv);
+      
+      var array = "";
+      $.each(subject.info, function (i, tag) {
+        array += i == 0 ? tag : "; " + tag;
+      });
+      $newSubject.append("<p class='info'>" + array + ".</p>");
+      
+      var $buttonDiv = $('<div class="button"></div>');
+      $buttonDiv.append(
+        '<button class="click ' + subject.code + '"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.93934 5.93934C6.52513 5.35355 7.47487 5.35355 8.06066 5.93934L13.0607 10.9393C13.342 11.2206 13.5 11.6022 13.5 12C13.5 12.3978 13.342 12.7794 13.0607 13.0607L8.06066 18.0607C7.47487 18.6464 6.52513 18.6464 5.93934 18.0607C5.35355 17.4749 5.35355 16.5251 5.93934 15.9393L9.87868 12L5.93934 8.06066C5.35355 7.47487 5.35355 6.52513 5.93934 5.93934ZM11.9393 5.93934C12.5251 5.35355 13.4749 5.35355 14.0607 5.93934L19.0607 10.9393C19.342 11.2206 19.5 11.6022 19.5 12C19.5 12.3978 19.342 12.7794 19.0607 13.0607L14.0607 18.0607C13.4749 18.6464 12.5251 18.6464 11.9393 18.0607C11.3536 17.4749 11.3536 16.5251 11.9393 15.9393L15.8787 12L11.9393 8.06066C11.3536 7.47487 11.3536 6.52513 11.9393 5.93934Z" fill="#09244B"/></svg></button>'
+      );
+      $newSubject.append($buttonDiv);
+      $(".subjects").append($newSubject);
+    });
+    
+    // Add click handlers after all subjects are added
+    $(".click").off("click").on("click", function (event) {
+      event.preventDefault();
+      var classNames = $(this).attr("class").split(" ");
+      console.log("Clicked:", classNames);
+      var redirectURL = "/subject.html?code=" + classNames[1];
+      window.open(redirectURL, "_blank");
+    });
+  }
+  
+  const filePath = "subjects.json";
+  let subjectsData = [];
+  
+  // Show loading message
+  $(".subjects").html('<div class="subject"><p style="text-align: center; padding: 2rem;">Loading subjects...</p></div>');
+  console.log("Fetching subjects from:", filePath);
+  
+  $.getJSON(filePath, function (subjectsDataJSON) {
+    console.log("Subjects loaded successfully:", subjectsDataJSON.length);
+    subjectsData = subjectsDataJSON;
+
+    // Handle click event on year/semester filters
+    $(".click-year").click(function () {
+      $(".click-year").removeClass("active").addClass("inActive");
+      $(this).removeClass("inActive").addClass("active");
+
+      var yearSem = $(this).text();
+      var year = parseInt(yearSem.split('.')[0]);
+      var sem = parseInt(yearSem.split('.')[1]);
+      
+      console.log("Filtering by year:", year, "sem:", sem);
+  
+      var filteredSubjects = subjectsData.filter(function (subject) {
+        return subject.year === year && subject.sem === sem;
       });
 
-      if (data[0].links) {
-        $.each(data[0].links, function (index, linkObj) {
-          $(".resources").slideDown();
+      console.log("Filtered subjects:", filteredSubjects.length);
+      displaySubjects(filteredSubjects);
+    });
+    
+    // Display all subjects by default when the page loads
+    console.log("Displaying all subjects");
+    displaySubjects(subjectsData);
 
-          // Resolve resource links to absolute /resources path
-          (function () {
-            var rawLink = String(linkObj.link || "");
-            // Convert ./resources/... to /resources/...
-            var resolvedHref = rawLink.replace(/^\.\//, "/");
-            resolvedHref = encodeURI(resolvedHref);
-
-            var link = $(
-              "<p>" +
-                linkObj["name"] +
-                ': <a href="' +
-                resolvedHref +
-                '" target="_blank" rel="noopener noreferrer">view</a></p>'
-            );
-            $(".resources").append(link);
-          })();
-        });
-      } else {
-      }
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.error('Primary info load failed:', textStatus, errorThrown, jqXHR && jqXHR.status);
-            console.log('Falling back to alt path /info/...');
-            var altPath = "/info/" + codeValue + ".json";
-            $.getJSON(altPath, function (data) {
-              // Re-run the same rendering logic by simulating success
-              var fileName = (function casing(string) {
-                return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
-                  return a.toUpperCase();
-                });
-              })(data[0].name);
-              $(".title").text(data[0].code + ": " + fileName);
-              var unitTableBody = $("#unitTableBody");
-              $.each(data[0].units, function (index, unit) {
-                var row = $("<tr></tr>");
-                row.append("<td>" + (function (string){return string.toLowerCase().replace(/(?:^|\s)\S/g,function(a){return a.toUpperCase();});})(unit.name) + "</td>");
-                if (data[0].syllabus == true) {
-                  $('th:contains("Syllabus")').remove();
-                }
-                !data[0].syllabus &&
-                  row.append(
-                    '<td><a class="unitLink" data-index="' +
-                      index +
-                      '">' +
-                      "View Syllabus</a></td>"
-                  );
-                unitTableBody.append(row);
-              });
-              $(".unitLink").click(function () {
-                var index = $(this).data("index");
-                var unit = data[0].units[index];
-                var unitInfo = $("#unitInfo");
-                unitInfo.empty();
-                unitInfo.append("<h3>" + unit.name + "</h3>");
-                var topicsList = $("<ul></ul>");
-                $.each(unit.topics, function (index, topic) {
-                  var topicItem = $("<li>" + topic.topic + "</li>");
-                  var subTopicsList = $("<ul></ul>");
-                  $.each(topic.subTopics, function (index, subTopic) {
-                    subTopicsList.append("<li>" + subTopic + "</li>");
-                  });
-                  topicItem.append(subTopicsList);
-                  topicsList.append(topicItem);
-                });
-                unitInfo.append(topicsList);
-                $(".info").fadeIn();
-                var infoElement = $(".info");
-                $("html, body").animate(
-                  {
-                    scrollTop: infoElement.offset().top,
-                  },
-                  200
-                );
-              });
-
-              if (data[0].links) {
-                $.each(data[0].links, function (index, linkObj) {
-                  $(".resources").slideDown();
-                  (function () {
-                    var rawLink = String(linkObj.link || "");
-                    var normalized = rawLink.replace(/^\.\//, "./");
-                    var resolvedHref;
-                    try {
-                      resolvedHref = new URL(normalized, window.location.href).href;
-                    } catch (e) {
-                      resolvedHref = encodeURI(normalized);
-                    }
-                    var link = $(
-                      "<p>" +
-                        linkObj["name"] +
-                        ': <a href="' +
-                        resolvedHref +
-                        '" target="_blank" rel="noopener noreferrer">view</a></p>'
-                    );
-                    $(".resources").append(link);
-                  })();
-                });
-              }
-            }).fail(function(jqXHR2, textStatus2, errorThrown2) {
-              $('h2').text('Error fetching details');
-              $('table').hide();
-              console.error('Alt info load failed:', textStatus2, errorThrown2, jqXHR2 && jqXHR2.status);
-            });
-        });
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    console.error("Error loading subjects:", textStatus, errorThrown);
+    console.error("XHR:", jqXHR);
+    $(".subjects").html('<div class="subject" style="text-align: center; padding: 2rem;"><h3 style="color: var(--dark-green);">Unable to load subjects</h3><p style="color: var(--forest-green); margin-top: 1rem;">Error: ' + textStatus + '</p><p>Please refresh the page or check your connection.</p></div>');
   });
+});

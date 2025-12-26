@@ -1,15 +1,5 @@
 {
   "buildCommand": "echo 'No build needed for static site'",
   "outputDirectory": "public",
-  "cleanUrls": false,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/home-index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ]
+  "cleanUrls": false
 }
