@@ -1,4 +1,20 @@
 $(document).ready(function () {
+    // Initialize dark mode from localStorage
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      $('#themeText').text('Light');
+      $('#themeIcon').text('☀️');
+    }
+    
+    // Theme toggle functionality
+    $('#themeToggle').on('click', function() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      $('#themeText').text(isDark ? 'Light' : 'Dark');
+      $('#themeIcon').text(isDark ? '☀️' : '🌙');
+    });
+    
     $(".table").fadeIn();
     
     function getUrlParameter(name) {
