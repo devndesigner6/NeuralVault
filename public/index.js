@@ -51,9 +51,9 @@ $(document).ready(function () {
     $(".click").off("click").on("click", function (event) {
       event.preventDefault();
       var classNames = $(this).attr("class").split(" ");
-      console.log("Clicked:", classNames);
-      var redirectURL = "/subject.html?code=" + classNames[1];
-      window.open(redirectURL, "_blank");
+      var code = classNames[1];
+      console.log("Loading subject:", code);
+      loadSubjectDetail(code);
     });
   }
   
@@ -96,4 +96,113 @@ $(document).ready(function () {
     console.error("XHR:", jqXHR);
     $(".subjects").html('<div class="subject" style="text-align: center; padding: 2rem;"><h3 style="color: var(--dark-green);">Unable to load subjects</h3><p style="color: var(--forest-green); margin-top: 1rem;">Error: ' + textStatus + '</p><p>Please refresh the page or check your connection.</p></div>');
   });
+});
+
+function casing(string) {
+  return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
+    return a.toUpperCase();
+  });
+}
+
+function loadSubjectDetail(code) {
+  var filePath = "/info/" + code + ".json";
+  console.log("Loading subject JSON from:", filePath);
+  
+  $.ajax({
+    url: filePath,
+    dataType: 'json',
+    success: function(data) {
+      var fileName = casing(data[0].name);
+      $(".subject-detail .subject-title").text(data[0].code + ": " + fileName);
+      
+      // Clear previous content
+      $("#unitTableBody").empty();
+      $(".resources-list").empty();
+      $("#unitInfo").empty();
+      
+      // Load units
+      $.each(data[0].units, function (index, unit) {
+        var row = $("<tr></tr>");
+        row.append("<td style='padding: 0.5rem; border-bottom: 1px solid var(--dark-green);'>" + casing(unit.name) + "</td>");
+        if (data[0].syllabus != true) {
+          row.append(
+            '<td style="padding: 0.5rem; border-bottom: 1px solid var(--dark-green);"><a class="unitLink" data-index="' +
+              index +
+              '" style="color: var(--dark-green); cursor: pointer; text-decoration: underline;">View Syllabus</a></td>'
+          );
+        }
+        $("#unitTableBody").append(row);
+      });
+      
+      // Load resources
+      if (data[0].links && data[0].links.length > 0) {
+        $(".resources").slideDown();
+        $.each(data[0].links, function (index, linkObj) {
+          var rawLink = String(linkObj.link || "");
+          var resolvedHref = rawLink.replace(/^\.\//, "/");
+          resolvedHref = encodeURI(resolvedHref);
+          
+          var link = $(
+            '<div style="margin: 0.5rem 0;"><a href="' +
+              resolvedHref +
+              '" target="_blank" rel="noopener noreferrer" style="color: var(--dark-green); text-decoration: underline;">' +
+              linkObj["name"] +
+              '</a></div>'
+          );
+          $(".resources-list").append(link);
+        });
+      }
+      
+      // Click handler for syllabus
+      $(".unitLink").off("click").on("click", function() {
+        var index = $(this).data("index");
+        var unit = data[0].units[index];
+        var unitInfo = $("#unitInfo");
+        unitInfo.empty();
+        unitInfo.append("<h4>" + unit.name + "</h4>");
+        var topicsList = $("<ul></ul>");
+        $.each(unit.topics, function (index, topic) {
+          var topicItem = $("<li style='margin: 0.5rem 0;'>" + topic.topic + "</li>");
+          var subTopicsList = $("<ul style='margin-left: 1rem;'></ul>");
+          $.each(topic.subTopics, function (index, subTopic) {
+            subTopicsList.append("<li>" + subTopic + "</li>");
+          });
+          topicItem.append(subTopicsList);
+          topicsList.append(topicItem);
+        });
+        unitInfo.append(topicsList);
+        $(".info").fadeIn();
+        var infoElement = $(".info");
+        $("html, body").animate(
+          {
+            scrollTop: infoElement.offset().top,
+          },
+          300
+        );
+      });
+      
+      // Show subject detail section
+      $(".subject-detail").fadeIn();
+      $("html, body").animate(
+        {
+          scrollTop: $(".subject-detail").offset().top,
+        },
+        300
+      );
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.error('Failed to load subject JSON:', textStatus, errorThrown);
+      alert('Error loading subject: ' + errorThrown);
+    }
+  });
+}
+
+// Back button handler
+$(".back-btn").off("click").on("click", function() {
+  $(".subject-detail").fadeOut();
+  $("#unitTableBody").empty();
+  $(".resources-list").empty();
+  $("#unitInfo").empty();
+  $(".info").hide();
+  $(".resources").hide();
 });
