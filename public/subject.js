@@ -17,8 +17,8 @@ $(document).ready(function () {
       return;
     }
     $(".title").text(codeValue);
-    // Use absolute path from Vercel root: /public is the output directory, so /info is accessible as /info
-    var filePath = "/info/" + codeValue + ".json";
+    // Try relative path first, then absolute
+    var filePath = "./info/" + codeValue + ".json";
     console.log("Attempting to load:", filePath);
     $.getJSON(filePath, function (data) {
       var fileName = casing(data[0].name);
@@ -100,8 +100,8 @@ $(document).ready(function () {
       } else {
       }
     }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.error('Primary info load failed:', textStatus, errorThrown, jqXHR && jqXHR.status);
-            console.log('Falling back to alt path /info/...');
+            console.error('Primary relative path load failed:', textStatus, errorThrown, jqXHR && jqXHR.status);
+            console.log('Falling back to absolute path /info/...');
             var altPath = "/info/" + codeValue + ".json";
             $.getJSON(altPath, function (data) {
               // Re-run the same rendering logic by simulating success
