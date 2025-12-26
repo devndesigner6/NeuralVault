@@ -178,11 +178,12 @@
       }
 
       body.dark-mode .neural-node {
-        fill: #b8e6d5 !important;
+        fill: #1d4e30 !important;
       }
 
       body.dark-mode .neural-connection {
-        stroke: #75b798 !important;
+        stroke: #2d6a3e !important;
+        opacity: 0.5 !important;
       }
 
       @keyframes logoFloat {
@@ -204,15 +205,15 @@
       header h1 {
         font-size: 3.5rem;
         margin: 0;
-        color: #1d4e30;
+        color: #e8f5f1;
         font-weight: 700;
         letter-spacing: -1px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
       }
 
       .tagline {
         font-size: 1rem;
-        color: #2d6a3e;
+        color: #d4ebe4;
         margin: 0.5rem 0 0;
         font-weight: 400;
         letter-spacing: 0.3px;
@@ -342,12 +343,12 @@
       }
 
       body.dark-mode header h1 {
-        color: #b8e6d5;
-        text-shadow: 2px 2px 8px rgba(184, 230, 213, 0.3);
+        color: #e8f5f1;
+        text-shadow: 2px 2px 8px rgba(232, 245, 241, 0.4);
       }
 
       body.dark-mode .tagline {
-        color: #75b798;
+        color: #b8e6d5;
       }
 
       body.dark-mode .search-input {
@@ -701,37 +702,37 @@
           
           <!-- Neural Network Connections -->
           <g class="connections">
-            <line class="neural-connection" x1="20" y1="30" x2="40" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="20" y1="30" x2="60" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="20" y1="60" x2="40" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="20" y1="60" x2="60" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="20" y1="90" x2="40" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="20" y1="90" x2="60" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+            <line class="neural-connection" x1="20" y1="30" x2="40" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="20" y1="30" x2="60" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="20" y1="60" x2="40" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="20" y1="60" x2="60" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="20" y1="90" x2="40" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="20" y1="90" x2="60" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
             
-            <line class="neural-connection" x1="40" y1="60" x2="80" y2="40" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="40" y1="60" x2="80" y2="80" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="60" y1="60" x2="80" y2="40" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="60" y1="60" x2="80" y2="80" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+            <line class="neural-connection" x1="40" y1="60" x2="80" y2="40" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="40" y1="60" x2="80" y2="80" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="60" y1="60" x2="80" y2="40" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="60" y1="60" x2="80" y2="80" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
             
-            <line class="neural-connection" x1="80" y1="40" x2="100" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
-            <line class="neural-connection" x1="80" y1="80" x2="100" y2="60" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+            <line class="neural-connection" x1="80" y1="40" x2="100" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
+            <line class="neural-connection" x1="80" y1="80" x2="100" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
           </g>
           
           <!-- Input Layer (Left) -->
-          <circle class="neural-node" cx="20" cy="30" r="5" fill="#1d4e30"/>
-          <circle class="neural-node" cx="20" cy="60" r="5" fill="#1d4e30"/>
-          <circle class="neural-node" cx="20" cy="90" r="5" fill="#1d4e30"/>
+          <circle class="neural-node" cx="20" cy="30" r="5" fill="#e8f5f1"/>
+          <circle class="neural-node" cx="20" cy="60" r="5" fill="#e8f5f1"/>
+          <circle class="neural-node" cx="20" cy="90" r="5" fill="#e8f5f1"/>
           
           <!-- Hidden Layer (Middle) -->
-          <circle class="neural-node" cx="40" cy="60" r="6" fill="#2d6a3e"/>
-          <circle class="neural-node" cx="60" cy="60" r="6" fill="#2d6a3e"/>
+          <circle class="neural-node" cx="40" cy="60" r="6" fill="#d4ebe4"/>
+          <circle class="neural-node" cx="60" cy="60" r="6" fill="#d4ebe4"/>
           
           <!-- Hidden Layer 2 (Right-Middle) -->
-          <circle class="neural-node" cx="80" cy="40" r="6" fill="#75b798"/>
-          <circle class="neural-node" cx="80" cy="80" r="6" fill="#75b798"/>
+          <circle class="neural-node" cx="80" cy="40" r="6" fill="#b8e6d5"/>
+          <circle class="neural-node" cx="80" cy="80" r="6" fill="#b8e6d5"/>
           
           <!-- Output Layer (Right) -->
-          <circle class="neural-node" cx="100" cy="60" r="7" fill="url(#logoGradient)"/>
+          <circle class="neural-node" cx="100" cy="60" r="7" fill="#9dd9c4"/>
         </svg>
         
         <div class="brand-container">
