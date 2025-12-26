@@ -17,10 +17,8 @@ $(document).ready(function () {
       return;
     }
     $(".title").text(codeValue);
-    // Prefer explicit relative path
-    // Build absolute URL so trailing-slash redirects don't break relative resolution
-    var infoBase = window.location.origin + "/public/";
-    var filePath = new URL("info/" + codeValue + ".json", infoBase).href;
+    // Use absolute path from Vercel root: /public is the output directory, so /info is accessible as /info
+    var filePath = "/info/" + codeValue + ".json";
     console.log("Attempting to load:", filePath);
     $.getJSON(filePath, function (data) {
       var fileName = casing(data[0].name);
@@ -82,17 +80,12 @@ $(document).ready(function () {
         $.each(data[0].links, function (index, linkObj) {
           $(".resources").slideDown();
 
-          // Resolve resource links relative to the current page (handles /public/ correctly)
+          // Resolve resource links to absolute /resources path
           (function () {
             var rawLink = String(linkObj.link || "");
-            // Keep relative paths and let the browser resolve; ensure proper encoding
-            var normalized = rawLink.replace(/^\.\//, "./");
-            var resolvedHref;
-            try {
-              resolvedHref = new URL(normalized, window.location.href).href;
-            } catch (e) {
-              resolvedHref = encodeURI(normalized);
-            }
+            // Convert ./resources/... to /resources/...
+            var resolvedHref = rawLink.replace(/^\.\//, "/");
+            resolvedHref = encodeURI(resolvedHref);
 
             var link = $(
               "<p>" +
@@ -108,8 +101,8 @@ $(document).ready(function () {
       }
     }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error('Primary info load failed:', textStatus, errorThrown, jqXHR && jqXHR.status);
-            console.log('Falling back to alt path under /public/info/...');
-            var altPath = new URL("info/" + codeValue + ".json", window.location.origin + "/public/").href;
+            console.log('Falling back to alt path /info/...');
+            var altPath = "/info/" + codeValue + ".json";
             $.getJSON(altPath, function (data) {
               // Re-run the same rendering logic by simulating success
               var fileName = (function casing(string) {
