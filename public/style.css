@@ -89,7 +89,7 @@ hr {
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   margin: var(--spacing-md);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .filters h2 {
@@ -124,8 +124,8 @@ hr {
 .click-year:hover {
   background: var(--sage-green);
   color: var(--dark-green);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(117, 183, 152, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(117, 183, 152, 0.2);
 }
 
 .click-year.inActive {
@@ -151,12 +151,12 @@ hr {
   border-radius: var(--radius-md);
   border: 2px solid var(--light-green);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .subject:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(117, 183, 152, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(117, 183, 152, 0.15);
   border-color: var(--sage-green);
 }
 
@@ -197,9 +197,9 @@ footer a {
 }
 
 footer a:hover {
-  background: rgba(117, 183, 152, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(117, 183, 152, 0.2);
+  background: rgba(117, 183, 152, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(117, 183, 152, 0.15);
 }
 
 footer a svg {
@@ -216,13 +216,13 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(117, 183, 152, 0.3);
+  box-shadow: 0 2px 6px rgba(117, 183, 152, 0.15);
 }
 
 button:hover {
   background: var(--lime-green);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(197, 255, 77, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(117, 183, 152, 0.2);
 }
 
 button:active {

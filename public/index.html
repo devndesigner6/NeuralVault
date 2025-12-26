@@ -110,7 +110,17 @@
         right: 1.5rem;
         font-size: 1.3rem;
         pointer-events: none;
-        opacity: 0.6;
+        opacity: 0.5;
+        animation: searchFloat 2s ease-in-out infinite;
+      }
+
+      @keyframes searchFloat {
+        0%, 100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-2px);
+        }
       }
 
       header {
@@ -130,60 +140,69 @@
         width: 100px;
         height: 100px;
         animation: logoFloat 3s ease-in-out infinite;
-        filter: drop-shadow(0 4px 12px rgba(117, 183, 152, 0.6));
+        filter: drop-shadow(0 2px 4px rgba(117, 183, 152, 0.2));
       }
 
-      .neural-node {
-        animation: pulse 2s ease-in-out infinite;
+      /* Minimalistic Logo Animations */
+      .logo-pulse {
+        animation: logoPulse 2.5s ease-in-out infinite;
+        transform-origin: center;
       }
 
-      .neural-node:nth-child(1) { animation-delay: 0s; }
-      .neural-node:nth-child(2) { animation-delay: 0.2s; }
-      .neural-node:nth-child(3) { animation-delay: 0.4s; }
-      .neural-node:nth-child(4) { animation-delay: 0.6s; }
-      .neural-node:nth-child(5) { animation-delay: 0.8s; }
-      .neural-node:nth-child(6) { animation-delay: 1s; }
-      .neural-node:nth-child(7) { animation-delay: 1.2s; }
+      .logo-connect {
+        animation: logoConnect 2.5s ease-in-out infinite;
+      }
 
-      @keyframes pulse {
+      .logo-node {
+        animation: nodeGlow 2s ease-in-out infinite;
+      }
+
+      .logo-accent {
+        animation: accentFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes logoPulse {
         0%, 100% {
-          opacity: 0.6;
+          stroke-width: 2.5;
+          opacity: 0.7;
         }
         50% {
+          stroke-width: 3;
+          opacity: 0.9;
+        }
+      }
+
+      @keyframes logoConnect {
+        0%, 100% {
+          stroke-dasharray: 10, 10;
+          stroke-dashoffset: 0;
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes nodeGlow {
+        0%, 100% {
+          r: 3;
+          opacity: 0.7;
+        }
+        50% {
+          r: 4;
           opacity: 1;
-          transform: scale(1.2);
         }
       }
 
-      .neural-connection {
-        animation: flow 3s ease-in-out infinite;
-      }
-
-      .neural-connection:nth-child(1) { animation-delay: 0s; }
-      .neural-connection:nth-child(2) { animation-delay: 0.3s; }
-      .neural-connection:nth-child(3) { animation-delay: 0.6s; }
-      .neural-connection:nth-child(4) { animation-delay: 0.9s; }
-      .neural-connection:nth-child(5) { animation-delay: 1.2s; }
-      .neural-connection:nth-child(6) { animation-delay: 1.5s; }
-
-      @keyframes flow {
+      @keyframes accentFloat {
         0%, 100% {
-          stroke-opacity: 0.2;
-          stroke-width: 1;
+          stroke-width: 2;
+          opacity: 0.4;
         }
         50% {
-          stroke-opacity: 0.8;
-          stroke-width: 2;
+          stroke-width: 2.5;
+          opacity: 0.7;
         }
-      }
-
-      body.dark-mode .neural-node {
-        fill: #1d4e30 !important;
-      }
-
-      body.dark-mode .neural-connection {
-        stroke: #2d6a3e !important;
-        opacity: 0.5 !important;
       }
 
       @keyframes logoFloat {
@@ -232,8 +251,8 @@
         position: absolute;
         top: 1rem;
         right: 1rem;
-        background: rgba(255, 255, 255, 0.2);
-        border: 2px solid rgba(29, 78, 48, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(29, 78, 48, 0.2);
         border-radius: 50px;
         padding: 0.5rem 1rem;
         cursor: pointer;
@@ -249,9 +268,9 @@
       }
 
       .theme-toggle:hover {
-        background: rgba(255, 255, 255, 0.3);
-        border-color: var(--forest-green);
-        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(29, 78, 48, 0.4);
+        transform: scale(1.02);
       }
 
       .theme-toggle #themeIcon {
@@ -303,13 +322,13 @@
         display: none;
         z-index: 99;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
       }
 
       .back-to-top:hover {
         background: var(--forest-green);
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       }
 
       .back-to-top.show {
@@ -382,7 +401,23 @@
 
       body.dark-mode .theme-toggle {
         background: rgba(45, 74, 62, 0.3);
-        border-color: rgba(117, 183, 152, 0.4);
+        border-color: rgba(117, 183, 152, 0.3);
+      }
+
+      body.dark-mode .logo-pulse {
+        stroke: #75b798 !important;
+      }
+
+      body.dark-mode .logo-connect {
+        stroke: #75b798 !important;
+      }
+
+      body.dark-mode .logo-node {
+        fill: #75b798 !important;
+      }
+
+      body.dark-mode .logo-accent {
+        stroke: #75b798 !important;
       }
 
       body.dark-mode .filters {
@@ -498,7 +533,7 @@
         color: white;
         padding: 1rem 2rem;
         border-radius: 50px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
         z-index: 1000;
         opacity: 0;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -862,47 +897,18 @@
       </button>
       
       <div class="header-container">
-        <svg class="logo-animated" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#75b798;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#2d6a3e;stop-opacity:1" />
-            </linearGradient>
-          </defs>
-          
-          <!-- Neural Network Connections -->
-          <g class="connections">
-            <line class="neural-connection" x1="20" y1="30" x2="40" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="20" y1="30" x2="60" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="20" y1="60" x2="40" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="20" y1="60" x2="60" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="20" y1="90" x2="40" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="20" y1="90" x2="60" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            
-            <line class="neural-connection" x1="40" y1="60" x2="80" y2="40" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="40" y1="60" x2="80" y2="80" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="60" y1="60" x2="80" y2="40" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="60" y1="60" x2="80" y2="80" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            
-            <line class="neural-connection" x1="80" y1="40" x2="100" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-            <line class="neural-connection" x1="80" y1="80" x2="100" y2="60" stroke="#b8e6d5" stroke-width="1.5" opacity="0.6"/>
-          </g>
-          
-          <!-- Input Layer (Left) -->
-          <circle class="neural-node" cx="20" cy="30" r="5" fill="#e8f5f1"/>
-          <circle class="neural-node" cx="20" cy="60" r="5" fill="#e8f5f1"/>
-          <circle class="neural-node" cx="20" cy="90" r="5" fill="#e8f5f1"/>
-          
-          <!-- Hidden Layer (Middle) -->
-          <circle class="neural-node" cx="40" cy="60" r="6" fill="#d4ebe4"/>
-          <circle class="neural-node" cx="60" cy="60" r="6" fill="#d4ebe4"/>
-          
-          <!-- Hidden Layer 2 (Right-Middle) -->
-          <circle class="neural-node" cx="80" cy="40" r="6" fill="#b8e6d5"/>
-          <circle class="neural-node" cx="80" cy="80" r="6" fill="#b8e6d5"/>
-          
-          <!-- Output Layer (Right) -->
-          <circle class="neural-node" cx="100" cy="60" r="7" fill="#9dd9c4"/>
+        <svg class="logo-animated" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Minimalistic Brain/Neural Icon -->
+          <!-- Left hemisphere -->
+          <circle class="logo-pulse" cx="30" cy="40" r="15" fill="none" stroke="#75b798" stroke-width="2.5" opacity="0.8"/>
+          <!-- Right hemisphere -->
+          <circle class="logo-pulse" cx="70" cy="40" r="15" fill="none" stroke="#75b798" stroke-width="2.5" opacity="0.8"/>
+          <!-- Center connection -->
+          <line class="logo-connect" x1="45" y1="40" x2="55" y2="40" stroke="#75b798" stroke-width="2" opacity="0.6"/>
+          <!-- Bottom node -->
+          <circle class="logo-node" cx="50" cy="70" r="3" fill="#75b798" opacity="0.9"/>
+          <!-- Top accent line -->
+          <line class="logo-accent" x1="30" y1="25" x2="70" y2="25" stroke="#75b798" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
         </svg>
         
         <div class="brand-container">
