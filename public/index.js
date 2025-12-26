@@ -72,14 +72,28 @@ $(document).ready(function () {
       if (data[0].links) {
         $.each(data[0].links, function (index, linkObj) {
           $(".resources").slideDown();
-          var link = $(
-            "<p>" +
-              linkObj["name"] +
-              ': <a href="' +
-              linkObj.link +
-              '" target="_blank">view</a></p>'
-          );
-          $(".resources").append(link);
+
+          // Resolve resource links relative to the current page (handles /public/ correctly)
+          (function () {
+            var rawLink = String(linkObj.link || "");
+            // Keep relative paths and let the browser resolve; ensure proper encoding
+            var normalized = rawLink.replace(/^\.\//, "./");
+            var resolvedHref;
+            try {
+              resolvedHref = new URL(normalized, window.location.href).href;
+            } catch (e) {
+              resolvedHref = encodeURI(normalized);
+            }
+
+            var link = $(
+              "<p>" +
+                linkObj["name"] +
+                ': <a href="' +
+                resolvedHref +
+                '" target="_blank" rel="noopener noreferrer">view</a></p>'
+            );
+            $(".resources").append(link);
+          })();
         });
       } else {
       }
