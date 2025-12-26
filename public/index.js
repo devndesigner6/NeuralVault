@@ -1,10 +1,8 @@
-console.log("Script loaded!");
+console.log("Homepage loaded!");
 
 $(document).ready(function () {
-  console.log("jQuery ready!");
   
   function displaySubjects(subjects) {
-    console.log("Displaying subjects:", subjects.length);
     $(".subjects").empty();
     
     if (!subjects || subjects.length === 0) {
@@ -47,28 +45,58 @@ $(document).ready(function () {
       $(".subjects").append($newSubject);
     });
     
-    // Add click handlers after all subjects are added
+    // Click handler - navigate to subject page
     $(".click").off("click").on("click", function (event) {
       event.preventDefault();
       var classNames = $(this).attr("class").split(" ");
       var code = classNames[1];
-      console.log("Loading subject:", code);
-      loadSubjectDetail(code);
+      
+      // Save to last viewed
+      saveLastViewed(code);
+      
+      // Navigate to subject page
+      window.location.href = "/subject.html?code=" + code;
     });
   }
   
-  const filePath = "subjects.json";
+  function saveLastViewed(code) {
+    var viewed = JSON.parse(localStorage.getItem('lastViewed')) || [];
+    viewed = viewed.filter(function(item) { return item !== code; });
+    viewed.unshift(code);
+    viewed = viewed.slice(0, 5);
+    localStorage.setItem('lastViewed', JSON.stringify(viewed));
+  }
+  
+  function loadLastViewed(subjectsData) {
+    var viewed = JSON.parse(localStorage.getItem('lastViewed')) || [];
+    if (viewed.length === 0) {
+      $("#lastViewedSection").hide();
+      return;
+    }
+    
+    $("#lastViewedSection").show();
+    $("#lastViewedList").empty();
+    
+    viewed.forEach(function(code) {
+      var subject = subjectsData.find(function(s) { return s.code === code; });
+      if (subject) {
+        var $item = $('<div class="last-viewed-item" data-code="' + code + '">' + subject.name + '</div>');
+        $item.on('click', function() {
+          saveLastViewed(code);
+          window.location.href = "/subject.html?code=" + code;
+        });
+        $("#lastViewedList").append($item);
+      }
+    });
+  }
+  
   let subjectsData = [];
   
-  // Show loading message
-  $(".subjects").html('<div class="subject"><p style="text-align: center; padding: 2rem;">Loading subjects...</p></div>');
-  console.log("Fetching subjects from:", filePath);
-  
-  $.getJSON(filePath, function (subjectsDataJSON) {
-    console.log("Subjects loaded successfully:", subjectsDataJSON.length);
+  $.getJSON("subjects.json", function (subjectsDataJSON) {
     subjectsData = subjectsDataJSON;
+    loadLastViewed(subjectsData);
+    displaySubjects(subjectsData);
 
-    // Handle click event on year/semester filters
     $(".click-year").click(function () {
       $(".click-year").removeClass("active").addClass("inActive");
       $(this).removeClass("inActive").addClass("active");
@@ -76,122 +104,18 @@ $(document).ready(function () {
       var yearSem = $(this).text();
       var year = parseInt(yearSem.split('.')[0]);
       var sem = parseInt(yearSem.split('.')[1]);
-      
-      console.log("Filtering by year:", year, "sem:", sem);
   
       var filteredSubjects = subjectsData.filter(function (subject) {
         return subject.year === year && subject.sem === sem;
       });
 
-      console.log("Filtered subjects:", filteredSubjects.length);
       displaySubjects(filteredSubjects);
     });
     
-    // Display all subjects by default when the page loads
-    console.log("Displaying all subjects");
     displaySubjects(subjectsData);
 
   }).fail(function(jqXHR, textStatus, errorThrown) {
-    console.error("Error loading subjects:", textStatus, errorThrown);
-    console.error("XHR:", jqXHR);
-    $(".subjects").html('<div class="subject" style="text-align: center; padding: 2rem;"><h3 style="color: var(--dark-green);">Unable to load subjects</h3><p style="color: var(--forest-green); margin-top: 1rem;">Error: ' + textStatus + '</p><p>Please refresh the page or check your connection.</p></div>');
+    console.error("Error loading subjects:", textStatus);
+    $(".subjects").html('<div class="subject" style="text-align: center;"><h3>Unable to load subjects</h3><p>Error: ' + textStatus + '</p></div>');
   });
-});
-
-function casing(string) {
-  return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
-    return a.toUpperCase();
-  });
-}
-
-function loadSubjectDetail(code) {
-  var filePath = "/info/" + code + ".json";
-  console.log("Loading subject JSON from:", filePath);
-  
-  $.ajax({
-    url: filePath,
-    dataType: 'json',
-    success: function(data) {
-      var fileName = casing(data[0].name);
-      $(".subject-detail .subject-title").text(data[0].code + ": " + fileName);
-      
-      // Clear previous content
-      $("#unitTableBody").empty();
-      $(".resources-list").empty();
-      $("#unitInfo").empty();
-      
-      // Load units
-      $.each(data[0].units, function (index, unit) {
-        var row = $("<tr></tr>");
-        row.append("<td style='padding: 0.5rem; border-bottom: 1px solid var(--dark-green);'>" + casing(unit.name) + "</td>");
-        if (data[0].syllabus != true) {
-          row.append(
-            '<td style="padding: 0.5rem; border-bottom: 1px solid var(--dark-green);"><a class="unitLink" data-index="' +
-              index +
-              '" style="color: var(--dark-green); cursor: pointer; text-decoration: underline;">View Syllabus</a></td>'
-          );
-        }
-        $("#unitTableBody").append(row);
-      });
-      
-      // Load resources
-      if (data[0].links && data[0].links.length > 0) {
-        $(".resources").slideDown();
-        $.each(data[0].links, function (index, linkObj) {
-          var rawLink = String(linkObj.link || "");
-          var resolvedHref = rawLink.replace(/^\.\//, "/");
-          resolvedHref = encodeURI(resolvedHref);
-          
-          var link = $(
-            '<div style="margin: 0.5rem 0;"><a href="' +
-              resolvedHref +
-              '" target="_blank" rel="noopener noreferrer" style="color: var(--dark-green); text-decoration: underline;">' +
-              linkObj["name"] +
-              '</a></div>'
-          );
-          $(".resources-list").append(link);
-        });
-      }
-      
-      // Click handler for syllabus - load in place, don't scroll
-      $(".unitLink").off("click").on("click", function() {
-        var index = $(this).data("index");
-        var unit = data[0].units[index];
-        var unitInfo = $("#unitInfo");
-        unitInfo.empty();
-        unitInfo.append("<h4>" + unit.name + "</h4>");
-        var topicsList = $("<ul></ul>");
-        $.each(unit.topics, function (index, topic) {
-          var topicItem = $("<li style='margin: 0.5rem 0;'>" + topic.topic + "</li>");
-          var subTopicsList = $("<ul style='margin-left: 1rem;'></ul>");
-          $.each(topic.subTopics, function (index, subTopic) {
-            subTopicsList.append("<li>" + subTopic + "</li>");
-          });
-          topicItem.append(subTopicsList);
-          topicsList.append(topicItem);
-        });
-        unitInfo.append(topicsList);
-        $(".info").fadeIn();
-        // NO scrolling to top - just show content in place
-      });
-      
-      // Show subject detail section in place
-      $("#subjectDetail").fadeIn();
-      // NO scrolling - content loads where it is on the page
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.error('Failed to load subject JSON:', textStatus, errorThrown);
-      alert('Error loading subject: ' + errorThrown);
-    }
-  });
-}
-
-// Back button handler
-$(".back-btn").off("click").on("click", function() {
-  $("#subjectDetail").fadeOut();
-  $("#unitTableBody").empty();
-  $(".resources-list").empty();
-  $("#unitInfo").empty();
-  $(".info").hide();
-  $(".resources").hide();
 });
