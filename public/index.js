@@ -18,7 +18,9 @@ $(document).ready(function () {
     }
     $(".title").text(codeValue);
     // Prefer explicit relative path
-    var filePath = "./info/" + codeValue + ".json";
+    // Build absolute URL so trailing-slash redirects don't break relative resolution
+    var infoBase = window.location.origin + "/public/";
+    var filePath = new URL("info/" + codeValue + ".json", infoBase).href;
     console.log("Attempting to load:", filePath);
     $.getJSON(filePath, function (data) {
       var fileName = casing(data[0].name);
@@ -106,8 +108,8 @@ $(document).ready(function () {
       }
     }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error('Primary info load failed:', textStatus, errorThrown, jqXHR && jqXHR.status);
-            console.log('Falling back to alt path /info/...');
-            var altPath = "info/" + codeValue + ".json";
+            console.log('Falling back to alt path under /public/info/...');
+            var altPath = new URL("info/" + codeValue + ".json", window.location.origin + "/public/").href;
             $.getJSON(altPath, function (data) {
               // Re-run the same rendering logic by simulating success
               var fileName = (function casing(string) {

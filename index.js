@@ -52,7 +52,7 @@ $(document).ready(function () {
       event.preventDefault();
       var classNames = $(this).attr("class").split(" ");
       console.log("Clicked:", classNames);
-      var redirectURL = "./public/?code=" + classNames[1];
+      var redirectURL = "./public/index.html?code=" + classNames[1];
       window.open(redirectURL, "_blank");
     });
   }
