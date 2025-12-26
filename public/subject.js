@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $(".table").fadeIn();
+    
     function getUrlParameter(name) {
       name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
       var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
@@ -14,6 +15,25 @@ $(document).ready(function () {
         return a.toUpperCase();
       });
     }
+    
+    function openPdfPreview(pdfPath, pdfName) {
+      $('#pdfTitle').text(pdfName || 'PDF Preview');
+      var iframeUrl = encodeURI(pdfPath) + '#toolbar=0';
+      $('#pdfViewer').html('<iframe src="' + iframeUrl + '" title="' + pdfName + '"></iframe>');
+      $('#pdfPreviewModal').addClass('show');
+    }
+    
+    $('#pdfCloseBtn').on('click', function() {
+      $('#pdfPreviewModal').removeClass('show');
+      $('#pdfViewer').html('');
+    });
+    
+    $(document).on('keydown', function(event) {
+      if (event.keyCode === 27) { // Escape key
+        $('#pdfPreviewModal').removeClass('show');
+        $('#pdfViewer').html('');
+      }
+    });
     
     var codeValue = getUrlParameter("code");
     console.log("code param:", codeValue);
@@ -90,11 +110,23 @@ $(document).ready(function () {
             var link = $(
               "<p>" +
                 linkObj["name"] +
-                ': <a href="' +
+                ': <a class="resource-link" href="javascript:void(0);" data-pdf="' +
                 resolvedHref +
-                '" target="_blank" rel="noopener noreferrer">view</a></p>'
+                '" data-name="' +
+                linkObj["name"] +
+                '">view</a> (<a href="' +
+                resolvedHref +
+                '" download target="_blank" style="font-size: 0.85rem;">download</a>)</p>'
             );
             $(".resources").append(link);
+          });
+          
+          // Attach click handler for PDF preview
+          $('.resource-link').on('click', function(e) {
+            e.preventDefault();
+            var pdfPath = $(this).data('pdf');
+            var pdfName = $(this).data('name');
+            openPdfPreview(pdfPath, pdfName);
           });
         }
       },

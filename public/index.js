@@ -2,6 +2,9 @@ console.log("Homepage loaded!");
 
 $(document).ready(function () {
   
+  let subjectsData = [];
+  let filteredSubjects = [];
+  
   function displaySubjects(subjects) {
     $(".subjects").empty();
     
@@ -90,10 +93,63 @@ $(document).ready(function () {
     });
   }
   
-  let subjectsData = [];
+  function performSearch(query) {
+    var searchTerm = query.toLowerCase().trim();
+    
+    if (searchTerm === "") {
+      // Reset to show all or filtered by year
+      var activeYear = $(".click-year.active");
+      if (activeYear.length > 0) {
+        var yearSem = activeYear.text();
+        var year = parseInt(yearSem.split('.')[0]);
+        var sem = parseInt(yearSem.split('.')[1]);
+        filteredSubjects = subjectsData.filter(function (subject) {
+          return subject.year === year && subject.sem === sem;
+        });
+      } else {
+        filteredSubjects = subjectsData;
+      }
+    } else {
+      // Filter by search term and current year filter if active
+      var activeYear = $(".click-year.active");
+      filteredSubjects = subjectsData.filter(function (subject) {
+        var matchesSearch = subject.name.toLowerCase().includes(searchTerm) || 
+                           subject.code.toLowerCase().includes(searchTerm);
+        if (activeYear.length > 0) {
+          var yearSem = activeYear.text();
+          var year = parseInt(yearSem.split('.')[0]);
+          var sem = parseInt(yearSem.split('.')[1]);
+          return matchesSearch && subject.year === year && subject.sem === sem;
+        }
+        return matchesSearch;
+      });
+    }
+    
+    displaySubjects(filteredSubjects);
+  }
+  
+  // Back to top button functionality
+  $(window).on('scroll', function() {
+    if ($(this).scrollTop() > 300) {
+      $('#backToTop').addClass('show');
+    } else {
+      $('#backToTop').removeClass('show');
+    }
+  });
+  
+  $('#backToTop').on('click', function() {
+    $('html, body').animate({scrollTop: 0}, 500);
+  });
+  
+  // Search functionality
+  $('#searchInput').on('keyup', function() {
+    var query = $(this).val();
+    performSearch(query);
+  });
   
   $.getJSON("subjects.json", function (subjectsDataJSON) {
     subjectsData = subjectsDataJSON;
+    filteredSubjects = subjectsData;
     loadLastViewed(subjectsData);
     displaySubjects(subjectsData);
 
@@ -105,11 +161,13 @@ $(document).ready(function () {
       var year = parseInt(yearSem.split('.')[0]);
       var sem = parseInt(yearSem.split('.')[1]);
   
-      var filteredSubjects = subjectsData.filter(function (subject) {
+      var subjects = subjectsData.filter(function (subject) {
         return subject.year === year && subject.sem === sem;
       });
 
-      displaySubjects(filteredSubjects);
+      // Clear search when filtering by year
+      $('#searchInput').val('');
+      displaySubjects(subjects);
     });
     
     displaySubjects(subjectsData);

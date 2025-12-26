@@ -51,6 +51,81 @@
         transform: translateY(-2px);
       }
 
+      .floating-search {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--light-green) 0%, var(--cream) 100%);
+        padding: 1rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        border-bottom: 2px solid var(--dark-green);
+      }
+
+      .search-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--dark-green);
+        border-radius: 6px;
+        font-size: 1rem;
+        background: white;
+        color: var(--dark-green);
+        transition: all 0.3s ease;
+      }
+
+      .search-input:focus {
+        outline: none;
+        border-color: var(--forest-green);
+        box-shadow: 0 0 8px rgba(29, 78, 48, 0.3);
+      }
+
+      .search-input::placeholder {
+        color: var(--forest-green);
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--dark-green);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: none;
+        z-index: 99;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-to-top:hover {
+        background: var(--forest-green);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .back-to-top.show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body {
+        padding-top: 70px;
+      }
+
       @media (max-width: 768px) {
         .subjects {
           grid-template-columns: 1fr;
@@ -71,6 +146,30 @@
 
         .subject h1 {
           font-size: 1.3rem;
+        }
+
+        .floating-search {
+          padding: 0.75rem 0.5rem;
+        }
+
+        .search-container {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .search-input {
+          font-size: 0.95rem;
+        }
+
+        .back-to-top {
+          width: 45px;
+          height: 45px;
+          right: 1rem;
+          bottom: 1rem;
+        }
+
+        body {
+          padding-top: 60px;
         }
       }
 
@@ -100,6 +199,14 @@
   </head>
   <body>
     <div class="bg-animation" id="bgAnimation"></div>
+    
+    <div class="floating-search">
+      <div class="search-container">
+        <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search subjects by name...">
+      </div>
+    </div>
+    
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
     
     <header>
       <h1>NeuralVault</h1>

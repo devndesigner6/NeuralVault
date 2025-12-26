@@ -8,6 +8,101 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/logo.svg" type="image/svg+xml" />
     <link rel="shortcut icon" href="/logo.svg" />
+    <style>
+      .pdf-preview-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pdf-preview-modal.show {
+        display: flex;
+      }
+
+      .pdf-preview-container {
+        width: 90%;
+        height: 90%;
+        background: white;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .pdf-preview-header {
+        padding: 1rem;
+        border-bottom: 2px solid var(--dark-green);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .pdf-preview-header h3 {
+        margin: 0;
+        color: var(--dark-green);
+      }
+
+      .pdf-close-btn {
+        background: var(--dark-green);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .pdf-close-btn:hover {
+        background: var(--forest-green);
+      }
+
+      .pdf-viewer {
+        flex: 1;
+        overflow: auto;
+      }
+
+      .pdf-viewer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .resource-link {
+        cursor: pointer;
+        color: var(--forest-green);
+        text-decoration: underline;
+        transition: all 0.2s ease;
+      }
+
+      .resource-link:hover {
+        color: var(--dark-green);
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .pdf-preview-container {
+          width: 95%;
+          height: 85%;
+        }
+
+        .pdf-preview-header {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .pdf-preview-header h3 {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -33,6 +128,18 @@
     <div class="info">
       <div id="unitInfo"></div>
     </div>
+    
+    <!-- PDF Preview Modal -->
+    <div class="pdf-preview-modal" id="pdfPreviewModal">
+      <div class="pdf-preview-container">
+        <div class="pdf-preview-header">
+          <h3 id="pdfTitle">PDF Preview</h3>
+          <button class="pdf-close-btn" id="pdfCloseBtn">✕ Close</button>
+        </div>
+        <div class="pdf-viewer" id="pdfViewer"></div>
+      </div>
+    </div>
+    
     <footer>
       <hr>
       <div>
