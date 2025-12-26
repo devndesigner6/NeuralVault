@@ -52,44 +52,101 @@
       }
 
       .floating-search {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, var(--light-green) 0%, var(--cream) 100%);
-        padding: 1rem;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-        border-bottom: 2px solid var(--dark-green);
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        z-index: auto;
+        border-bottom: none;
+        margin-top: 2rem;
       }
 
       .search-container {
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 500px;
+        margin: 0 auto 2rem;
         display: flex;
         align-items: center;
         gap: 1rem;
+        justify-content: center;
       }
 
       .search-input {
         flex: 1;
-        padding: 0.75rem 1rem;
-        border: 2px solid var(--dark-green);
-        border-radius: 6px;
+        max-width: 400px;
+        padding: 1rem 1.5rem;
+        border: 2px solid rgba(29, 78, 48, 0.3);
+        border-radius: 50px;
         font-size: 1rem;
-        background: white;
+        background: rgba(255, 255, 255, 0.1);
         color: var(--dark-green);
         transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
       }
 
       .search-input:focus {
         outline: none;
         border-color: var(--forest-green);
-        box-shadow: 0 0 8px rgba(29, 78, 48, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(29, 78, 48, 0.2);
       }
 
       .search-input::placeholder {
+        color: rgba(29, 78, 48, 0.6);
+      }
+
+      header {
+        text-align: center;
+        padding: 2rem 1rem 0;
+      }
+
+      .header-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .logo-animated {
+        width: 50px;
+        height: 50px;
+        animation: logoFloat 3s ease-in-out infinite;
+      }
+
+      @keyframes logoFloat {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-8px) rotate(5deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(0deg);
+        }
+        75% {
+          transform: translateY(-8px) rotate(-5deg);
+        }
+      }
+
+      header h1 {
+        font-size: 3rem;
+        margin: 0;
+        background: linear-gradient(135deg, #1d4e30 0%, #2d6a3e 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .tagline {
+        font-size: 0.95rem;
         color: var(--forest-green);
+        margin: 0;
+        font-style: italic;
       }
 
       .back-to-top {
@@ -122,11 +179,49 @@
         justify-content: center;
       }
 
+      /* Enhanced glassmorphism effect */
+      .search-input {
+        border: 1.5px solid rgba(181, 232, 213, 0.4);
+      }
+
+      .search-input:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(181, 232, 213, 0.6);
+      }
+
       body {
-        padding-top: 70px;
+        padding-top: 0;
       }
 
       @media (max-width: 768px) {
+        .floating-search {
+          margin-top: 1.5rem;
+        }
+
+        .search-container {
+          max-width: 100%;
+          padding: 0 1rem;
+        }
+
+        .search-input {
+          max-width: 100%;
+          font-size: 0.95rem;
+          padding: 0.85rem 1.2rem;
+        }
+
+        .logo-animated {
+          width: 40px;
+          height: 40px;
+        }
+
+        header h1 {
+          font-size: 2rem;
+        }
+
+        .tagline {
+          font-size: 0.85rem;
+        }
+
         .subjects {
           grid-template-columns: 1fr;
         }
@@ -147,33 +242,41 @@
         .subject h1 {
           font-size: 1.3rem;
         }
+      }
 
-        .floating-search {
-          padding: 0.75rem 0.5rem;
-        }
-
-        .search-container {
+      @media (max-width: 480px) {
+        .header-title {
           flex-direction: column;
           gap: 0.5rem;
         }
 
+        .logo-animated {
+          width: 35px;
+          height: 35px;
+        }
+
+        header h1 {
+          font-size: 1.5rem;
+        }
+
+        .tagline {
+          font-size: 0.75rem;
+        }
+
+        .search-container {
+          max-width: 100%;
+          padding: 0 0.5rem;
+        }
+
         .search-input {
-          font-size: 0.95rem;
+          padding: 0.75rem 1rem;
+          font-size: 0.9rem;
         }
 
-        .back-to-top {
-          width: 45px;
-          height: 45px;
-          right: 1rem;
-          bottom: 1rem;
+        header {
+          padding: 1rem 0.5rem 0;
         }
 
-        body {
-          padding-top: 60px;
-        }
-      }
-
-      @media (max-width: 480px) {
         header {
           padding: 1rem;
         }
@@ -200,6 +303,30 @@
   <body>
     <div class="bg-animation" id="bgAnimation"></div>
     
+    <header>
+      <div class="header-title">
+        <svg class="logo-animated" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#75b798;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#2d6a3e;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="45" fill="url(#logoGradient)"/>
+          <circle cx="30" cy="30" r="8" fill="#b8e6d5"/>
+          <circle cx="50" cy="25" r="8" fill="#b8e6d5"/>
+          <circle cx="70" cy="30" r="8" fill="#b8e6d5"/>
+          <circle cx="35" cy="50" r="8" fill="#b8e6d5"/>
+          <circle cx="65" cy="50" r="8" fill="#b8e6d5"/>
+          <circle cx="30" cy="70" r="8" fill="#b8e6d5"/>
+          <circle cx="50" cy="75" r="8" fill="#b8e6d5"/>
+          <circle cx="70" cy="70" r="8" fill="#b8e6d5"/>
+        </svg>
+        <h1>NeuralVault</h1>
+      </div>
+      <p class="tagline">Comprehensive Educational Resources</p>
+    </header>
+    
     <div class="floating-search">
       <div class="search-container">
         <input type="text" class="search-input" id="searchInput" placeholder="🔍 Search subjects by name...">
@@ -207,11 +334,6 @@
     </div>
     
     <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-    
-    <header>
-      <h1>NeuralVault</h1>
-      <p>Comprehensive Educational Resources</p>
-    </header>
     
     <hr />
     
