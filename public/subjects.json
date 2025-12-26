@@ -1,0 +1,1097 @@
+[
+  {
+    "name": "Academic Calender",
+    "code": "AC",
+    "year": 0,
+    "sem": 0,
+    "credits": 0,
+    "tags": [
+      "Academic Calender"
+    ],
+    "info": [
+      "2025-26 Calenders"
+    ]
+  },
+  {
+    "name": "Matrices and Calculus",
+    "code": "M1",
+    "year": 1,
+    "sem": 1,
+    "credits": 4,
+    "tags": [
+      "Mathematics and Physics"
+    ],
+    "info": [
+      "Matrices",
+      "Eigen values and Eigen vectors",
+      "Calculus",
+      "Multivariable Calculus (Partial Differentiation and applications)",
+      "Multivariable Calculus (Integration)"
+    ]
+  },
+  {
+    "name": "Applied Physics",
+    "code": "AP",
+    "year": 1,
+    "sem": 1,
+    "credits": 4,
+    "tags": [
+      "Mathematics and Physics"
+    ],
+    "info": [
+      "Quantum Physics and Solids",
+      "Semiconductors and Devices",
+      "Dielectric, Magnetic and Energy Materials",
+      "Nanotechnology",
+      "Laser and Fiber Optics"
+    ]
+  },
+  {
+    "name": "Programming for Problem Solving",
+    "code": "PPS",
+    "year": 1,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "Introduction to Programming",
+      "Arrays, Strings, Structures and Pointers",
+      "Preprocessor and File Handling in C",
+      "Function and Dynamic Memory Allocation",
+      "Searching and Sorting"
+    ]
+  },
+  {
+    "name": "Engineering Workshop",
+    "code": "EW",
+    "year": 1,
+    "sem": 1,
+    "credits": 2.5,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "Carpentry",
+      "Fitting",
+      "Tin-Smithy",
+      "Foundry",
+      "Welding Practice",
+      "House-wiring",
+      "Black Smithy"
+    ]
+  },
+  {
+    "name": "English for Skill Enhancement",
+    "code": "ESE",
+    "year": 1,
+    "sem": 1,
+    "credits": 2,
+    "tags": [
+      "General Education"
+    ],
+    "info": [
+      "Toasted English",
+      "Appro JRD",
+      "Lessons from Online Learning",
+      "Art and Literature",
+      "Go, Kiss the World"
+    ]
+  },
+  {
+    "name": "Elements of Computer Science & Engineering",
+    "code": "ECSE",
+    "year": 1,
+    "sem": 1,
+    "credits": 4,
+    "tags": [
+      "Engineering Fundamentals "
+    ],
+    "info": [
+      "Basics of a Computer",
+      "Software Development and Program Development",
+      " Operating Systems and Database Management Systems",
+      "Computer Networks, World Wide Web, Security",
+      "Autonomous Systems, Cloud Basics"
+    ]
+  },
+  {
+    "name": "Applied Physics Laboratory",
+    "code": "APL",
+    "year": 1,
+    "sem": 1,
+    "credits": 1.5,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "Planck’s constant ",
+      "Hall co-efficient and carrier concentration",
+      "series and parallel LCR circuits",
+      "Diodes",
+      "Resistivity of Semiconductor",
+      "Magnetic Material",
+      "LASER beam",
+      "Torsional Pendulum"
+    ]
+  },
+  {
+    "name": "Programming for Problem Solving Laboratory ",
+    "code": "PPSL",
+    "year": 1,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Programming"
+    ],
+    "info": []
+  },
+  {
+    "name": "English Language and Communication Skills Laboratory",
+    "code": "ELCSL",
+    "year": 1,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": []
+  },
+  {
+    "name": "Environmental Science",
+    "code": "ES",
+    "year": 1,
+    "sem": 1,
+    "credits": 0,
+    "tags": [
+      "General Education"
+    ],
+    "info": [
+      "Ecosystems",
+      "Natural Resources",
+      "Biodiversity and Biotic Resources",
+      "Environmental Pollution and Control Technologies",
+      "Environmental Policy, Legislation & EIA"
+    ]
+  },
+  {
+    "name": "Ordinary Differential Equations and Vector Calculus",
+    "code": "M2",
+    "year": 1,
+    "sem": 2,
+    "credits": 4,
+    "tags": [
+      "Mathematics and Physics"
+    ],
+    "info": [
+      "First Order ODE",
+      "Ordinary Differential Equations of Higher Order",
+      "Laplace transforms",
+      "Vector Differentiation",
+      " Vector Integration"
+    ]
+  },
+  {
+    "name": "Engineering Chemistry ",
+    "code": "Mathematics and Physics",
+    "year": 1,
+    "sem": 2,
+    "credits": 4,
+    "tags": [
+      "Core"
+    ],
+    "info": [
+      "Water and its treatment",
+      "Battery Chemistry & Corrosion",
+      "Polymeric materials",
+      "Energy Sources",
+      "Energy Sources"
+    ]
+  },
+  {
+    "name": "Computer Aided Engineering Graphics ",
+    "code": "EG",
+    "year": 1,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "Introduction to Engineering Graphics",
+      "Orthographic Projections",
+      "Projections of Regular Solids",
+      "Development of Surfaces of Right Regular Solids",
+      "Isometric Projections"
+    ]
+  },
+  {
+    "name": "Basic Electrical Engineering ",
+    "code": "BEE",
+    "year": 1,
+    "sem": 2,
+    "credits": 2,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "DC Circuits",
+      "AC Circuits",
+      "Transformers",
+      "Electrical Machines",
+      "Electrical Installations"
+    ]
+  },
+  {
+    "name": "ELECTElectronic Devices and Circuits",
+    "code": "EDC",
+    "year": 1,
+    "sem": 2,
+    "credits": 2,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "Diodes",
+      "Diode Applications",
+      "Bipolar Junction Transistor",
+      "Junction Field Effect Transistor",
+      "Special Purpose Devices"
+    ]
+  },
+  {
+    "name": " Python Programming Laboratory",
+    "code": "PPL",
+    "year": 1,
+    "sem": 2,
+    "credits": 2,
+    "tags": [
+      "Programming"
+    ],
+    "info": []
+  },
+  {
+    "name": " Engineering Chemistry Laboratory",
+    "code": "ECL",
+    "year": 1,
+    "sem": 2,
+    "credits": 1,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": []
+  },
+  {
+    "name": " Basic Electrical Engineering Laboratory",
+    "code": "BEEL",
+    "year": 1,
+    "sem": 2,
+    "credits": 1,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": []
+  },
+  {
+    "name": "IT Workshop",
+    "code": "ITW",
+    "year": 1,
+    "sem": 2,
+    "credits": 1,
+    "tags": [
+      "Programming"
+    ],
+    "info": []
+  },
+  {
+    "name": "Mathematical and Statistical Foundations",
+    "code": "MSF",
+    "year": 2,
+    "sem": 1,
+    "credits": 4,
+    "tags": [
+      "Mathematics and Physics"
+    ],
+    "info": [
+      "Greatest Common Divisors and Prime Factorization",
+      "Congruences",
+      "Simple Linear Regression and Correlation",
+      "Random Variables and Probability Distributions",
+      "Discrete Probability Distributions",
+      "Continuous Probability Distributions",
+      "Fundamental Sampling Distributions",
+      "Estimation & Tests of Hypotheses",
+      "Stochastic Processes and Markov Chains"
+    ]
+  },
+  {
+    "name": "Data Structures",
+    "code": "DS",
+    "year": 2,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Introduction to Data Structures",
+      "Dictionaries",
+      "Search Trees",
+      "Graphs ans Sorting",
+      "Pattern Matching and Tries"
+    ]
+  },
+  {
+    "name": "Computer Organization and Architecture",
+    "code": "COA",
+    "year": 2,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Engineering Fundamentals"
+    ],
+    "info": [
+      "Digital Computers",
+      "Microprogrammed Control and CPU",
+      "Data Representation and Computer Arithmetic",
+      "Organization",
+      "Reduced Instruction Set Computer, Pipeline and Multi Processors"
+    ]
+  },
+  {
+    "name": "Software Engineering",
+    "code": "SE",
+    "year": 2,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Programming"
+    ],
+    "info": [
+      "Introduction to Software Engineering",
+      "Software Requirements",
+      "Design Engineering",
+      "Testing Strategies",
+      "Risk management"
+    ]
+  },
+  {
+    "name": "Operating Systems",
+    "code": "OS",
+    "year": 2,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Operating System - Introduction and Process",
+      "CPU Scheduling and Deadlock",
+      "Process Management and Synchronization and Interprocess Communication Mechanisms:",
+      "Memory Management and Virtual Memory",
+      "File System Interface and Operations"
+    ]
+  },
+  {
+    "name": "Data Structures Lab",
+    "code": "DSL",
+    "year": 2,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "Operating Systems Lab",
+    "code": "OSL",
+    "year": 2,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "Software Engineering Lab",
+    "code": "SEL",
+    "year": 2,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Programming"
+    ],
+    "info": []
+  },
+  {
+    "name": "Node JS/ React JS/ Django",
+    "code": "NRDJ",
+    "year": 2,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "Constitution of India",
+    "code": "COI",
+    "year": 2,
+    "sem": 1,
+    "credits": 0,
+    "tags": [
+      "General Education"
+    ],
+    "info": []
+  },
+  {
+    "name": "Discrete Mathematics",
+    "code": "DM",
+    "year": 2,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Mathematics and Physics"
+    ],
+    "info": [
+      "Mathematical logic",
+      "Set theory",
+      "Algebraic Structures",
+      "Elementary Combinatorics",
+      "Graph Theorym"
+    ]
+  },
+  {
+    "name": "Automata Theory and Compiler Design",
+    "code": "ATCD",
+    "year": 2,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Introduction to Finite Automata",
+      "Regular Expressions",
+      "Push Down Automata",
+      "Introduction",
+      "Syntax-Directed Translationt"
+    ]
+  },
+  {
+    "name": "Database Management Systems",
+    "code": "DBMS",
+    "year": 2,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Database System Applications",
+      "Introduction to the Relational Model",
+      "SQL: QUERIES, CONSTRAINTS, TRIGGERS",
+      "Transaction Concept",
+      "Data on External Storagee"
+    ]
+  },
+  {
+    "name": "Introduction to Artificial Intelligence",
+    "code": "IAI",
+    "year": 2,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Introduction to AI, Searching for Solutions",
+      "Games",
+      "First-Order Logic, Knowledge Representation",
+      "Planning",
+      "Probabilistic Reasoning"
+    ]
+  },
+  {
+    "name": "Object Oriented Programming through Java",
+    "code": "OOPS",
+    "year": 2,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Object oriented thinking and Java Basics",
+      "Inheritance, Packages and Interfaces",
+      "Exception handling and Multithreading",
+      "Event Handling",
+      "Applets"
+    ]
+  },
+  {
+    "name": "Database Management Systems Lab",
+    "code": "DBMSL",
+    "year": 2,
+    "sem": 2,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Model",
+      "Normalization",
+      "Commands",
+      "Queries using Aggregate functions",
+      "Procedures",
+      "Usage of Cursors"
+    ]
+  },
+  {
+    "name": "Java Programming Lab",
+    "code": "JAVAL",
+    "year": 2,
+    "sem": 2,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Encapsulation, Inheritance,Polymorphism and Abstraction",
+      "Random Access File",
+      "Package Structure",
+      "CRUD operations",
+      "Adapter classes"
+    ]
+  },
+  {
+    "name": "PROLOG/ LISP/ PYSWIP",
+    "code": "PLP",
+    "year": 2,
+    "sem": 2,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Basics",
+      "Monkey Banana problem",
+      "predicate ",
+      "countLists",
+      "accumulator"
+    ]
+  },
+  {
+    "name": "Gender Sensitization Lab",
+    "code": "GSL",
+    "year": 2,
+    "sem": 2,
+    "credits": 0,
+    "tags": [
+      "General Education"
+    ],
+    "info": [
+      "UNDERSTANDING GENDER",
+      "GENDER ROLES AND RELATIONS",
+      "GENDER AND LABOUR",
+      "GENDER - BASED VIOLENCE",
+      "GENDER AND CULTURE"
+    ]
+  },
+  {
+    "name": "DESIGN AND ANALYSIS OF ALGORITHMS",
+    "code": "DAA",
+    "year": 3,
+    "sem": 1,
+    "credits": 4,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Introduction, Divide and conquer",
+      "Disjoint Sets, Backtracking",
+      "Dynamic Programming",
+      "Greedy method, Basic Traversal and Search Techniques",
+      "Branch and Bound, NP-Hard and NP-Complete problems"
+    ]
+  },
+  {
+    "name": "MACHINE LEARNING",
+    "code": "ML",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Learning",
+      "Multi-layer Perceptron",
+      "Learning with Trees",
+      "Dimensionality Reduction",
+      "Reinforcement Learning"
+    ]
+  },
+  {
+    "name": "COMPUTER NETWORKS",
+    "code": "CN",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Network Hardware and Software",
+      "Physical Layer and Data Link Layer",
+      "Protocols",
+      "Medium Access Sublayer",
+      "Network Layer",
+      "Transport Layer",
+      "Application Layer"
+    ]
+  },
+  {
+    "name": "BUSINESS ECONOMICS & FINANCIAL ANALYSIS",
+    "code": "BEFA",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "General Education"
+    ],
+    "info": [
+      "Business and Economics",
+      "Demand and Supply Analysis",
+      "Production, Cost, Market Structures & Pricing",
+      "Financial Accounting",
+      "Financial Analysis through Ratios"
+    ]
+  },
+  {
+    "name": "PROFESSIONAL ELECTIVE-I: Web Programming",
+    "code": "WP",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": [
+      "Introduction to Graphs",
+      "Connected Graphs and Shortest Paths",
+      "Trees",
+      "Independent Sets, Coverings, and Matchings",
+      "Vertex and Edge Colorings"
+    ]
+  },
+  {
+    "name": "PROFESSIONAL ELECTIVE-I: Graph Theory",
+    "code": "PE-I-I",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": [
+      "Introduction to Graphs",
+      "Connected Graphs and Shortest Paths",
+      "Trees",
+      "Independent Sets, Coverings, and Matchings",
+      "Vertex and Edge Colorings"
+    ]
+  },
+  {
+    "name": "PROFESSIONAL ELECTIVE-I: Introduction to Data Science",
+    "code": "PE-I-II",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": [
+      "Introduction",
+      "Data Types & Statistical Description",
+      "Data Structures",
+      "Control Flow and Functions",
+      "Data Visualization and Regression"
+    ]
+  },
+  {
+    "name": "PROFESSIONAL ELECTIVE-I: Web Programming",
+    "code": "PE-I-III",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": [
+      "Client-Side Programming",
+      "Java",
+      "JDBC",
+      "Applets and Servlets",
+      "XML and Web Services"
+    ]
+  },
+  {
+    "name": "PROFESSIONAL ELECTIVE-I: Image Processing",
+    "code": "PE-I-IV",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": [
+      "Digital Image Fundamentals",
+      "Image Enhancement in Spatial Domain",
+      "Image Restoration",
+      "Image Segmentation",
+      "Image Compression"
+    ]
+  },
+  {
+    "name": "PROFESSIONAL ELECTIVE-I: Computer Graphics",
+    "code": "PE-I-V",
+    "year": 3,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": [
+      "Introduction and Output Primitives",
+      "2D Geometric Transformations and Viewing",
+      "3D Object Representation and Rendering",
+      "3D Geometric Transformations and Viewing",
+      "Computer Animation and Visible Surface Detection"
+    ]
+  },
+  {
+    "name": "MACHINE LEARNING LAB",
+    "code": "MLL",
+    "year": 3,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Compute Central Tendency Measures",
+      "Python Libraries",
+      "Regression",
+      "Decision Tree using sklearn",
+      "K-Nearest Neighbors",
+      "Logistic Regression",
+      "K-Means Clustering",
+      "Algorithms"
+    ]
+  },
+  {
+    "name": "COMPUTER NETWORKS LAB",
+    "code": "CNL",
+    "year": 3,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "ADVANCED ENGLISH COMMUNICATION SKILLS LAB",
+    "code": "AECS",
+    "year": 3,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "General Education"
+    ],
+    "info": []
+  },
+  {
+    "name": "UI DESIGN - FLUTTER",
+    "code": "UI",
+    "year": 3,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "INTELLECTUAL PROPERTY RIGHTS",
+    "code": "IPR",
+    "year": 3,
+    "sem": 1,
+    "credits": 0,
+    "tags": [
+      "General Education"
+    ],
+    "info": [
+      "Introduction to Intellectual Property",
+      "Trade Marks",
+      "Law of Copyrights and Patents",
+      "Trade Secrets and Unfair Competition",
+      "New Developments in Intellectual Property"
+    ]
+  },
+  {
+    "name": "Knowledge Representation and Reasoning",
+    "code": "KRR",
+    "year": 3,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "The Key Concepts",
+      "Logic",
+      "Ontology",
+      "Knowledge Representations",
+      "Processes",
+      "Knowledge Soup"
+    ]
+  },
+  {
+    "name": "Data Analytics",
+    "code": "DA",
+    "year": 3,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Data Management View Syllabus",
+      "Data Analytics View Syllabus",
+      "Regression And Logistic Regression View Syllabus",
+      "Object Segmentation And Time Series Methods View Syllabus",
+      "Data Visualization"
+    ]
+  },
+  {
+    "name": "Natural Language Processing",
+    "code": "NLP",
+    "year": 3,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": [
+      "Finding The Structure Of Words And Documents View Syllabus",
+      "Syntax I View Syllabus",
+      "Syntax Ii And Semantic Parsing I View Syllabus",
+      "Semantic Parsing Ii View Syllabus",
+      "Unit - V: Language Modeling"
+    ]
+  },
+  {
+    "name": "Professional Elective – II",
+    "code": "PE-II",
+    "year": 3,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Open Elective-I",
+    "code": "OE-I",
+    "year": 3,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Natural Language Processing Lab",
+    "code": "NLPL",
+    "year": 3,
+    "sem": 2,
+    "credits": 1.5,
+    "tags": [
+      "Laboratory"
+    ],
+    "info": []
+  },
+  {
+    "name": "Data Analytics Lab",
+    "code": "DAL",
+    "year": 3,
+    "sem": 2,
+    "credits": 1.5,
+    "tags": [
+      "Laboratory"
+    ],
+    "info": []
+  },
+  {
+    "name": "Industrial Oriented Mini Project/ Internship/Skill Development Course (DevOps)",
+    "code": "AM606PC",
+    "year": 3,
+    "sem": 2,
+    "credits": 2,
+    "tags": [
+      "Project"
+    ],
+    "info": []
+  },
+  {
+    "name": "Environmental Science",
+    "code": "ES",
+    "year": 3,
+    "sem": 2,
+    "credits": 0,
+    "tags": [
+      "Management"
+    ],
+    "info": []
+  },
+  {
+    "name": "Deep Learning",
+    "code": "DL",
+    "year": 4,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "Nature Inspired Computing",
+    "code": "NIC",
+    "year": 4,
+    "sem": 1,
+    "credits": 2,
+    "tags": [
+      "Specialized Computer Science"
+    ],
+    "info": []
+  },
+  {
+    "name": "Data Mining: Professional Elective - III",
+    "code": "DMINE",
+    "year": 4,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "SEMANTIC WEB: Professional Elective - IV",
+    "code": "SW",
+    "year": 4,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Electronic Sensors: Open Elective - II",
+    "code": "ES-OE",
+    "year": 4,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Professional Practice, Law & Ethics",
+    "code": "PPLE",
+    "year": 4,
+    "sem": 1,
+    "credits": 2,
+    "tags": [
+      "Management"
+    ],
+    "info": []
+  },
+  {
+    "name": "Data Mining Lab: Professional Elective - III Lab",
+    "code": "DML",
+    "year": 4,
+    "sem": 1,
+    "credits": 1,
+    "tags": [
+      "Laboratory"
+    ],
+    "info": []
+  },
+  {
+    "name": "Project Stage - I",
+    "code": "Project-I",
+    "year": 4,
+    "sem": 1,
+    "credits": 3,
+    "tags": [
+      "Project"
+    ],
+    "info": []
+  },
+  {
+    "name": "Professional Elective - V",
+    "code": "PE-V",
+    "year": 4,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Professional Elective - VI",
+    "code": "PE-VI",
+    "year": 4,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Open Elective - III",
+    "code": "OE-III",
+    "year": 4,
+    "sem": 2,
+    "credits": 3,
+    "tags": [
+      "Elective"
+    ],
+    "info": []
+  },
+  {
+    "name": "Project Stage – II including Seminar",
+    "code": "AM801PC",
+    "year": 4,
+    "sem": 2,
+    "credits": 11,
+    "tags": [
+      "Project"
+    ],
+    "info": []
+  }
+]

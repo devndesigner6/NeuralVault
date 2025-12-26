@@ -1,0 +1,64 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for nodes -->
+    <radialGradient id="nodeGradient">
+      <stop offset="0%" style="stop-color:#75b798;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a9673;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Pulse animation -->
+    <style>
+      .pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+      .pulse-delay {
+        animation: pulse 2s ease-in-out infinite;
+        animation-delay: 0.5s;
+      }
+      .line-pulse {
+        animation: linePulse 3s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { r: 12; opacity: 1; }
+        50% { r: 16; opacity: 0.6; }
+      }
+      @keyframes linePulse {
+        0%, 100% { stroke-opacity: 0.3; }
+        50% { stroke-opacity: 0.8; }
+      }
+    </style>
+  </defs>
+  
+  <!-- Outer circle background -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#75b798" stroke-width="2" opacity="0.2"/>
+  
+  <!-- Neural network pattern -->
+  <!-- Central node -->
+  <circle cx="100" cy="100" r="14" fill="url(#nodeGradient)" class="pulse"/>
+  
+  <!-- Top layer nodes -->
+  <circle cx="60" cy="60" r="10" fill="url(#nodeGradient)" class="pulse-delay"/>
+  <circle cx="140" cy="60" r="10" fill="url(#nodeGradient)" class="pulse"/>
+  
+  <!-- Middle layer nodes -->
+  <circle cx="50" cy="100" r="10" fill="url(#nodeGradient)" class="pulse"/>
+  <circle cx="150" cy="100" r="10" fill="url(#nodeGradient)" class="pulse-delay"/>
+  
+  <!-- Bottom layer nodes -->
+  <circle cx="70" cy="140" r="10" fill="url(#nodeGradient)" class="pulse-delay"/>
+  <circle cx="130" cy="140" r="10" fill="url(#nodeGradient)" class="pulse"/>
+  
+  <!-- Connections -->
+  <line x1="60" y1="60" x2="100" y2="100" stroke="#75b798" stroke-width="2" class="line-pulse"/>
+  <line x1="140" y1="60" x2="100" y2="100" stroke="#75b798" stroke-width="2" class="line-pulse"/>
+  <line x1="50" y1="100" x2="100" y2="100" stroke="#75b798" stroke-width="2" class="line-pulse"/>
+  <line x1="150" y1="100" x2="100" y2="100" stroke="#75b798" stroke-width="2" class="line-pulse"/>
+  <line x1="100" y1="100" x2="70" y2="140" stroke="#75b798" stroke-width="2" class="line-pulse"/>
+  <line x1="100" y1="100" x2="130" y2="140" stroke="#75b798" stroke-width="2" class="line-pulse"/>
+  
+  <!-- Cross connections -->
+  <line x1="60" y1="60" x2="50" y2="100" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+  <line x1="140" y1="60" x2="150" y2="100" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+  <line x1="50" y1="100" x2="70" y2="140" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+  <line x1="150" y1="100" x2="130" y2="140" stroke="#75b798" stroke-width="1.5" opacity="0.4"/>
+</svg>

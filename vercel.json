@@ -4,6 +4,10 @@
   "cleanUrls": false,
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/home-index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/$1"
     }
