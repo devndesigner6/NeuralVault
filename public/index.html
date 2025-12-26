@@ -1031,8 +1031,11 @@
       document.addEventListener('mousemove', function(e) {
         var x = e.clientX / window.innerWidth * 100;
         var y = e.clientY / window.innerHeight * 100;
+        var isDarkMode = document.body.classList.contains('dark-mode');
+        var glowSize = isDarkMode ? '200px' : '300px';
+        var glowIntensity = isDarkMode ? '0.08' : '0.15';
         document.getElementById('bgAnimation').style.background = 
-          'radial-gradient(circle 300px at ' + x + '% ' + y + '%, rgba(181, 232, 213, 0.15), transparent)';
+          'radial-gradient(circle ' + glowSize + ' at ' + x + '% ' + y + '%, rgba(181, 232, 213, ' + glowIntensity + '), transparent)';
       });
     </script>
     <script src="index.js"></script>

@@ -9,6 +9,22 @@
     <link rel="icon" href="/logo.svg" type="image/svg+xml" />
     <link rel="shortcut icon" href="/logo.svg" />
     <style>
+      .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle 300px at 50% 50%, rgba(181, 232, 213, 0.15), transparent);
+        pointer-events: none;
+        z-index: -1;
+        transition: background 0.1s ease-out;
+      }
+
+      body.dark-mode .bg-animation {
+        background: radial-gradient(circle 200px at 50% 50%, rgba(181, 232, 213, 0.08), transparent);
+      }
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -267,7 +283,19 @@
         <a href="../">Go to Home</a>
       </div>
     </footer>
+    <div class="bg-animation" id="bgAnimation"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      document.addEventListener('mousemove', function(e) {
+        var x = e.clientX / window.innerWidth * 100;
+        var y = e.clientY / window.innerHeight * 100;
+        var isDarkMode = document.body.classList.contains('dark-mode');
+        var glowSize = isDarkMode ? '200px' : '300px';
+        var glowIntensity = isDarkMode ? '0.08' : '0.15';
+        document.getElementById('bgAnimation').style.background = 
+          'radial-gradient(circle ' + glowSize + ' at ' + x + '% ' + y + '%, rgba(181, 232, 213, ' + glowIntensity + '), transparent)';
+      });
+    </script>
     <script src="./subject.js"></script>
   </body>
 </html>
