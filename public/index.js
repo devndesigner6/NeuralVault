@@ -153,7 +153,7 @@ function loadSubjectDetail(code) {
         });
       }
       
-      // Click handler for syllabus
+      // Click handler for syllabus - load in place, don't scroll
       $(".unitLink").off("click").on("click", function() {
         var index = $(this).data("index");
         var unit = data[0].units[index];
@@ -172,23 +172,12 @@ function loadSubjectDetail(code) {
         });
         unitInfo.append(topicsList);
         $(".info").fadeIn();
-        var infoElement = $(".info");
-        $("html, body").animate(
-          {
-            scrollTop: infoElement.offset().top,
-          },
-          300
-        );
+        // NO scrolling to top - just show content in place
       });
       
-      // Show subject detail section
-      $(".subject-detail").fadeIn();
-      $("html, body").animate(
-        {
-          scrollTop: $(".subject-detail").offset().top,
-        },
-        300
-      );
+      // Show subject detail section in place
+      $("#subjectDetail").fadeIn();
+      // NO scrolling - content loads where it is on the page
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.error('Failed to load subject JSON:', textStatus, errorThrown);
@@ -199,7 +188,7 @@ function loadSubjectDetail(code) {
 
 // Back button handler
 $(".back-btn").off("click").on("click", function() {
-  $(".subject-detail").fadeOut();
+  $("#subjectDetail").fadeOut();
   $("#unitTableBody").empty();
   $(".resources-list").empty();
   $("#unitInfo").empty();

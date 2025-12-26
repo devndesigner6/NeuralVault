@@ -4,72 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#75b798" />
-    <title>R22 Resources</title>
+    <title>NeuralVault - R22 Resources</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-    <link rel="shortcut icon" href="/logo.svg" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%2375b798'/><circle cx='30' cy='30' r='8' fill='%23b8e6d5'/><circle cx='50' cy='25' r='8' fill='%23b8e6d5'/><circle cx='70' cy='30' r='8' fill='%23b8e6d5'/><circle cx='35' cy='50' r='8' fill='%23b8e6d5'/><circle cx='65' cy='50' r='8' fill='%23b8e6d5'/><circle cx='30' cy='70' r='8' fill='%23b8e6d5'/><circle cx='50' cy='75' r='8' fill='%23b8e6d5'/><circle cx='70' cy='70' r='8' fill='%23b8e6d5'/><line x1='30' y1='30' x2='50' y2='25' stroke='%23b8e6d5' stroke-width='2'/><line x1='50' y1='25' x2='70' y2='30' stroke='%23b8e6d5' stroke-width='2'/><line x1='70' y1='30' x2='65' y2='50' stroke='%23b8e6d5' stroke-width='2'/><line x1='65' y1='50' x2='70' y2='70' stroke='%23b8e6d5' stroke-width='2'/><line x1='70' y1='70' x2='50' y2='75' stroke='%23b8e6d5' stroke-width='2'/><line x1='50' y1='75' x2='30' y2='70' stroke='%23b8e6d5' stroke-width='2'/><line x1='30' y1='70' x2='35' y2='50' stroke='%23b8e6d5' stroke-width='2'/><line x1='35' y1='50' x2='30' y2='30' stroke='%23b8e6d5' stroke-width='2'/><line x1='50' y1='25' x2='35' y2='50' stroke='%23b8e6d5' stroke-width='2'/><line x1='50' y1='25' x2='65' y2='50' stroke='%23b8e6d5' stroke-width='2'/><line x1='50' y1='75' x2='35' y2='50' stroke='%23b8e6d5' stroke-width='2'/><line x1='50' y1='75' x2='65' y2='50' stroke='%23b8e6d5' stroke-width='2'/></svg>" />
   </head>
   <body>
+    <!-- Cursor-tracking background animation -->
+    <div class="bg-animation" id="bgAnimation"></div>
+    
     <header>
-      <img
-        src="logo.svg"
-        alt="NeuralVault Logo"
-        style="width: 150px; height: 150px;"
-      />
       <h1>NeuralVault</h1>
-      <p style="color: var(--cream); font-size: 1.1rem; margin-top: 0.5rem;">Comprehensive Educational Resources</p>
+      <p>Comprehensive Educational Resources</p>
     </header>
     
     <hr />
-    <div>
-      <section class="filters">
-        <h2>Fliters:</h2>
-        <h4>Year</h4>
-        <div class="filter">
-          <p class="click-year inActive">1.1</p>
-          <p class="click-year inActive">1.2</p>
-          <p class="click-year inActive">2.1</p>
-          <p class="click-year inActive">2.2</p>
-          <p class="click-year inActive">3.1</p>
-          <p class="click-year inActive">3.2</p>
-          <p class="click-year inActive">4.1</p>
-          <p class="click-year inActive">4.2</p>
-        </div>
-      </section>
-      <section class="subjects">
-        <div class="subject">
-          <p>Please Wait...</p>
-        </div>
-      </section>
+    
+    <!-- Filters Section -->
+    <section class="filters">
+      <h2>Filters:</h2>
+      <h4>Year</h4>
+      <div class="filter">
+        <p class="click-year inActive">1.1</p>
+        <p class="click-year inActive">1.2</p>
+        <p class="click-year inActive">2.1</p>
+        <p class="click-year inActive">2.2</p>
+        <p class="click-year inActive">3.1</p>
+        <p class="click-year inActive">3.2</p>
+        <p class="click-year inActive">4.1</p>
+        <p class="click-year inActive">4.2</p>
+      </div>
+    </section>
+    
+    <!-- Subjects List -->
+    <section class="subjects" id="subjectsSection">
+      <div class="subject">
+        <p>Loading subjects...</p>
+      </div>
+    </section>
+    
+    <!-- Subject Detail Section (inline, not scrolling to top) -->
+    <section class="subject-detail" id="subjectDetail" style="display: none; margin-top: 3rem; padding: 2rem; background: var(--light-green); border-radius: 12px;">
+      <button class="back-btn" style="padding: 0.5rem 1rem; background: var(--dark-green); color: white; border: none; border-radius: 6px; cursor: pointer; margin-bottom: 1rem;">← Back</button>
+      <h2 class="subject-title"></h2>
       
-      <!-- Subject Detail Section (initially hidden) -->
-      <section class="subject-detail" style="display: none; margin-top: 3rem; padding: 2rem; background: var(--light-green); border-radius: 12px;">
-        <button class="back-btn" style="padding: 0.5rem 1rem; background: var(--dark-green); color: white; border: none; border-radius: 6px; cursor: pointer; margin-bottom: 1rem;">← Back to Subjects</button>
-        <h2 class="subject-title"></h2>
-        
-        <div class="resources" style="display: none; margin: 2rem 0;">
-          <h3>Resources & Notes:</h3>
-          <div class="resources-list"></div>
-        </div>
-        
-        <div class="table">
-          <h3>Units & Syllabus:</h3>
-          <table style="width: 100%; border-collapse: collapse;">
-            <thead>
-              <tr style="background: var(--dark-green); color: white;">
-                <th style="padding: 0.5rem; text-align: left;">Unit Name</th>
-                <th style="padding: 0.5rem; text-align: left;">Syllabus</th>
-              </tr>
-            </thead>
-            <tbody id="unitTableBody" style="border-top: 1px solid var(--dark-green);"></tbody>
-          </table>
-        </div>
-        
-        <div class="info" style="display: none; margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
-          <div id="unitInfo"></div>
-        </div>
-      </section>
-    </div>
+      <div class="resources" style="display: none; margin: 2rem 0;">
+        <h3>Resources & Notes:</h3>
+        <div class="resources-list"></div>
+      </div>
+      
+      <div class="table">
+        <h3>Units & Syllabus:</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background: var(--dark-green); color: white;">
+              <th style="padding: 0.5rem; text-align: left;">Unit Name</th>
+              <th style="padding: 0.5rem; text-align: left;">Syllabus</th>
+            </tr>
+          </thead>
+          <tbody id="unitTableBody" style="border-top: 1px solid var(--dark-green);"></tbody>
+        </table>
+      </div>
+      
+      <div class="info" style="display: none; margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 8px;">
+        <div id="unitInfo"></div>
+      </div>
+    </section>
+    
     <footer>
       <hr />
       <div>
@@ -81,7 +81,32 @@
         </a>
       </div>
     </footer>
+    
+    <style>
+      /* Cursor tracking background animation */
+      .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle 300px at 50% 50%, rgba(181, 232, 213, 0.15), transparent);
+        pointer-events: none;
+        z-index: -1;
+        transition: background 0.1s ease-out;
+      }
+    </style>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      // Cursor tracking background animation
+      document.addEventListener('mousemove', function(e) {
+        var x = e.clientX / window.innerWidth * 100;
+        var y = e.clientY / window.innerHeight * 100;
+        document.getElementById('bgAnimation').style.background = 
+          'radial-gradient(circle 300px at ' + x + '% ' + y + '%, rgba(181, 232, 213, 0.15), transparent)';
+      });
+    </script>
     <script src="index.js"></script>
   </body>
 </html>
