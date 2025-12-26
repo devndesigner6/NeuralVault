@@ -110,16 +110,19 @@
         right: 1.5rem;
         font-size: 1.3rem;
         pointer-events: none;
-        opacity: 0.5;
-        animation: searchFloat 2s ease-in-out infinite;
+        opacity: 0.6;
+        animation: searchGlow 2.5s ease-in-out infinite;
+        color: #75b798;
       }
 
-      @keyframes searchFloat {
+      @keyframes searchGlow {
         0%, 100% {
-          transform: translateY(0px);
+          opacity: 0.5;
+          text-shadow: 0 0 0px rgba(117, 183, 152, 0);
         }
         50% {
-          transform: translateY(-2px);
+          opacity: 0.8;
+          text-shadow: 0 0 8px rgba(117, 183, 152, 0.4);
         }
       }
 
@@ -224,15 +227,15 @@
       header h1 {
         font-size: 3.5rem;
         margin: 0;
-        color: #e8f5f1;
+        color: #1d4e30;
         font-weight: 700;
         letter-spacing: -1px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
       }
 
       .tagline {
         font-size: 1rem;
-        color: #d4ebe4;
+        color: #2d5016;
         margin: 0.5rem 0 0;
         font-weight: 400;
         letter-spacing: 0.3px;
@@ -241,6 +244,7 @@
         text-align: center;
         max-width: 800px;
         line-height: 1.6;
+        font-family: 'Instrument Serif', serif;
       }
 
       body.dark-mode .tagline {
@@ -363,11 +367,11 @@
 
       body.dark-mode header h1 {
         color: #e8f5f1;
-        text-shadow: 2px 2px 8px rgba(232, 245, 241, 0.4);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
       }
 
       body.dark-mode .tagline {
-        color: #e0f5f0;
+        color: #b8e6d5;
       }
 
       body.dark-mode .search-input {

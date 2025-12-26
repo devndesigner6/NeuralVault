@@ -85,11 +85,12 @@ hr {
 
 /* Filter Section */
 .filters {
-  background: var(--forest-green);
+  background: linear-gradient(135deg, rgba(117, 183, 152, 0.12), rgba(168, 213, 161, 0.08));
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   margin: var(--spacing-md);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(117, 183, 152, 0.15);
 }
 
 .filters h2 {
