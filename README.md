@@ -1,21 +1,21 @@
-# 🧠 AIML-sheet
+#  AIML-sheet
 
 > A comprehensive educational resource platform for students pursuing R22 curriculum
 
-## ✨ Project Overview
+## Project Overview
 
 AIML-sheet is a modern, interactive educational resource platform designed to provide students with seamless access to academic materials, study notes, and comprehensive course resources. Built with clean aesthetics and intuitive navigation, it's your go-to hub for organized learning.
 
-## 🚀 Key Features
+##  Key Features
 
-- **💫 Dynamic Content Display** - Built with modern web technologies for smooth, responsive navigation
-- **📚 Organized Resource Structure** - Resources systematically arranged by year and subject
-- **🔄 JSON-Driven Architecture** - Flexible, easy-to-update data management system
-- **👁️ Interactive Preview System** - Live preview and exploration of study materials
-- **🌙 Dark Mode Support** - Complete dark theme with persistent preferences
-- **📌 Bookmarking System** - Save and organize your favorite subjects
-- **🔍 Smart Search** - Real-time search across all subjects and units
-- **📱 Responsive Design** - Optimized for desktop, tablet, and mobile devices
+- ** Dynamic Content Display** - Built with modern web technologies for smooth, responsive navigation
+- ** Organized Resource Structure** - Resources systematically arranged by year and subject
+- ** JSON-Driven Architecture** - Flexible, easy-to-update data management system
+- ** Interactive Preview System** - Live preview and exploration of study materials
+- ** Dark Mode Support** - Complete dark theme with persistent preferences
+- ** Bookmarking System** - Save and organize your favorite subjects
+- ** Smart Search** - Real-time search across all subjects and units
+- ** Responsive Design** - Optimized for desktop, tablet, and mobile devices
 
 ---
 
