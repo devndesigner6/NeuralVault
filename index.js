@@ -46,6 +46,10 @@ $(document).ready(function () {
   }
   const filePath = "subjects.json";
   let subjectsData = [];
+  
+  // Show loading message
+  $(".subjects").html('<div class="subject"><p style="text-align: center; padding: 2rem;">Loading subjects...</p></div>');
+  
   $.getJSON(filePath, function (subjectsDataJSON) {
     let subjectsData = subjectsDataJSON;
     
@@ -74,5 +78,6 @@ $(document).ready(function () {
     // Display all subjects by default when the page loads
     displaySubjects(subjectsData);
     
-  });
-  });
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    console.error("Error loading subjects:", textStatus, errorThrown);
+    $(".subjects").html('<div class="subject" style="text-align: center; padding: 2rem;"><h3 style="color: var(--dark-green);">Unable to load subjects</h3><p style="color: var(--forest-green); margin-top: 1rem;">Please refresh the page or check your connection.</p></div>');
