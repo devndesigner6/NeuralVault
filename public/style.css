@@ -1,27 +1,41 @@
-/* Fonts: mix of serif and monospace for a crafted-tech feel */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600&display=swap');
+/* Import elegant serif font similar to MediaSnap */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --bg-primary: #f6f3ec;
-  --bg-secondary: #ece8ff;
-  --text-primary: #141724;
-  --text-muted: #4b5367;
-  --accent: #6c5dd3;
-  --accent-2: #b58cff;
-  --glass: rgba(255, 255, 255, 0.58);
-  --glass-dark: rgba(20, 18, 35, 0.4);
-  --glass-border: rgba(108, 93, 211, 0.25);
-  --shadow-soft: 0 25px 60px rgba(26, 25, 56, 0.18);
+  /* Matrix Green Palette */
+  --matrix-green: #00ff41;
+  --matrix-dark-green: #003b00;
+  --matrix-bg: #0a0a0a;
+  --matrix-overlay: rgba(0, 20, 0, 0.85);
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-muted: #b0b0b0;
+  --text-accent: #00ff41;
+  
+  /* Glass morphism */
+  --glass: rgba(0, 0, 0, 0.6);
+  --glass-dark: rgba(0, 0, 0, 0.7);
+  --glass-border: rgba(0, 255, 65, 0.2);
+  --glass-hover: rgba(0, 255, 65, 0.1);
+  
+  /* Accent colors */
+  --bg-primary: var(--matrix-bg);
+  --bg-secondary: var(--matrix-dark-green);
+  --accent: var(--matrix-green);
+  --accent-2: var(--matrix-green);
+  
+  /* Shadows */
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(0, 255, 65, 0.3);
   --radius: 18px;
   --radius-lg: 28px;
   --blur: 18px;
 }
 
 body {
-  font-family: 'Trebuchet MS', 'Sora', 'Segoe UI', 'Consolas', 'Courier New', 'Lucida Console', sans-serif;
-  background: radial-gradient(circle at 16% 18%, rgba(108, 93, 211, 0.12), transparent 36%),
-              radial-gradient(circle at 78% 28%, rgba(181, 140, 255, 0.12), transparent 38%),
-              linear-gradient(135deg, #f7f2e8 0%, #edf0ff 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--matrix-bg);
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
@@ -30,18 +44,20 @@ body {
   overflow-x: hidden;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--matrix-overlay);
+  z-index: -1;
+  pointer-events: none;
+}
+
 body.dark-mode {
-  --bg-primary: #0c0a16;
-  --bg-secondary: #120f1f;
-  --text-primary: #e9e7f7;
-  --text-muted: #9aa2c3;
-  --glass: rgba(19, 17, 32, 0.65);
-  --glass-dark: rgba(9, 7, 16, 0.65);
-  --glass-border: rgba(181, 140, 255, 0.22);
-  background: radial-gradient(circle at 18% 22%, rgba(108, 93, 211, 0.22), transparent 34%),
-              radial-gradient(circle at 82% 16%, rgba(181, 140, 255, 0.12), transparent 36%),
-              linear-gradient(135deg, #0b0914 0%, #0f1023 100%);
-  color: var(--text-primary);
+  /* Already in dark mode by default */
 }
 
 .bg-animation {
@@ -50,13 +66,18 @@ body.dark-mode {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: radial-gradient(circle 260px at 50% 50%, rgba(108, 93, 211, 0.14), transparent);
-  z-index: -1;
-  transition: background 0.2s ease-out;
+  z-index: -2;
 }
 
-.dark-mode .bg-animation {
-  background: radial-gradient(circle 220px at 50% 50%, rgba(181, 140, 255, 0.16), transparent);
+#matrix-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
 /* Topbar */
@@ -78,12 +99,13 @@ body.dark-mode {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #6c5dd3, #b58cff);
-  color: #0b0914;
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid var(--matrix-green);
+  color: var(--matrix-green);
   font-weight: 700;
   display: grid;
   place-items: center;
-  box-shadow: 0 12px 30px rgba(108, 93, 211, 0.35);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
   letter-spacing: 0.3px;
 }
 
@@ -94,9 +116,10 @@ body.dark-mode {
 }
 
 .brand-name {
-  font-family: 'Cormorant Garamond', 'Instrument Serif', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.55rem;
   letter-spacing: 0.4px;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 .brand-sub {
@@ -124,12 +147,14 @@ body.dark-mode {
   text-decoration: none;
   backdrop-filter: blur(var(--blur));
   box-shadow: var(--shadow-soft);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.dark-mode .ghost-link,
-.dark-mode .theme-toggle {
-  background: var(--glass-dark);
+.ghost-link:hover,
+.theme-toggle:hover {
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 .ghost-link:hover,
@@ -155,11 +180,12 @@ body.dark-mode {
 }
 
 .headline {
-  font-family: 'Cormorant Garamond', 'Instrument Serif', serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   line-height: 1.1;
   margin: 0 0 1rem;
   letter-spacing: 0.2px;
+  text-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
 }
 
 .tagline {
@@ -201,8 +227,9 @@ body.dark-mode {
 }
 
 .track-card.active {
-  border: 1.5px solid var(--accent);
-  box-shadow: 0 20px 50px rgba(108, 93, 211, 0.28);
+  border: 1.5px solid var(--matrix-green);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+  color: var(--matrix-green);
 }
 
 /* Filters */
@@ -264,14 +291,15 @@ body.dark-mode {
 
 .pill:hover {
   transform: translateY(-1px);
-  border-color: var(--accent);
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
 }
 
 .pill.active {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0b0914;
-  border-color: transparent;
-  box-shadow: 0 12px 32px rgba(108, 93, 211, 0.3);
+  background: rgba(0, 255, 65, 0.15);
+  color: var(--matrix-green);
+  border-color: var(--matrix-green);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 /* Subjects */
@@ -316,8 +344,8 @@ body.dark-mode {
 
 .subject-card:hover {
   transform: translateY(-2px);
-  border-color: var(--accent);
-  box-shadow: 0 18px 42px rgba(108, 93, 211, 0.22);
+  border-color: var(--matrix-green);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.25);
 }
 
 .subject-card .code {
@@ -360,10 +388,10 @@ body.dark-mode {
 }
 
 .ghost-btn:hover {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0b0914;
-  border-color: transparent;
-  box-shadow: 0 14px 28px rgba(108, 93, 211, 0.28);
+  background: rgba(0, 255, 65, 0.1);
+  color: var(--matrix-green);
+  border-color: var(--matrix-green);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 .empty-state {
@@ -397,7 +425,8 @@ body.dark-mode {
 }
 
 .footer a:hover {
-  color: var(--accent);
+  color: var(--matrix-green);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
 .footer-note {
@@ -412,9 +441,10 @@ body.dark-mode {
 }
 
 .subject-title {
-  font-family: 'Cormorant Garamond', 'Instrument Serif', serif;
+  font-family: 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
   margin: 0.5rem 0 0.25rem;
+  text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
 }
 
 .section-card {
@@ -449,24 +479,25 @@ table {
 }
 
 table thead {
-  background: rgba(108, 93, 211, 0.08);
-}
-
-.dark-mode table thead {
-  background: rgba(181, 140, 255, 0.08);
+  background: rgba(0, 255, 65, 0.08);
 }
 
 table th,
 table td {
   padding: 0.75rem;
   text-align: left;
-  border-bottom: 1px solid rgba(108, 93, 211, 0.18);
+  border-bottom: 1px solid rgba(0, 255, 65, 0.18);
 }
 
 .resource-link {
-  color: var(--accent);
+  color: var(--matrix-green);
   font-weight: 700;
   text-decoration: none;
+  transition: text-shadow 0.2s ease;
+}
+
+.resource-link:hover {
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
 .resource-link:hover {
