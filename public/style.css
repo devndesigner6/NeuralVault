@@ -1,5 +1,5 @@
-/* Import Instrumental Serif Font */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* Display + Body Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Sora:wght@400;500;600;700&display=swap');
 /* NeuralVault - Enhanced Green Aesthetic */
 
 :root {
@@ -33,7 +33,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Sora', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, var(--cream) 0%, #e8e4d0 100%);
   color: var(--dark-green);
   line-height: 1.6;
@@ -41,8 +41,8 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
+  font-family: 'Cormorant Garamond', 'Instrument Serif', serif;
+  font-weight: 500;
 }
 
 /* Header Styling */

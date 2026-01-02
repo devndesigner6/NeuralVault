@@ -25,6 +25,22 @@
         background: radial-gradient(circle 200px at 50% 50%, rgba(181, 232, 213, 0.08), transparent);
       }
 
+      /* Dark mode palette to mirror homepage redesign */
+      body.dark-mode {
+        background: radial-gradient(circle at 18% 22%, rgba(209, 75, 56, 0.08) 0, transparent 32%),
+                    radial-gradient(circle at 82% 18%, rgba(247, 216, 160, 0.06) 0, transparent 34%),
+                    #0b0909;
+        color: #f4e9d7;
+      }
+
+      body.dark-mode a {
+        color: #f7d8a0;
+      }
+
+      body.dark-mode a:hover {
+        color: #d14b38;
+      }
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -292,8 +308,9 @@
         var isDarkMode = document.body.classList.contains('dark-mode');
         var glowSize = isDarkMode ? '200px' : '300px';
         var glowIntensity = isDarkMode ? '0.08' : '0.15';
+        var glowColor = isDarkMode ? 'rgba(209, 75, 56, ' + glowIntensity + ')' : 'rgba(181, 232, 213, ' + glowIntensity + ')';
         document.getElementById('bgAnimation').style.background = 
-          'radial-gradient(circle ' + glowSize + ' at ' + x + '% ' + y + '%, rgba(181, 232, 213, ' + glowIntensity + '), transparent)';
+          'radial-gradient(circle ' + glowSize + ' at ' + x + '% ' + y + '%, ' + glowColor + ', transparent)';
       });
     </script>
     <script src="./subject.js"></script>
