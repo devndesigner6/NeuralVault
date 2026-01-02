@@ -2,287 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="theme-color" content="#200518" />
+    <meta name="theme-color" content="#6c5dd3" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title class="title"></title>
+    <title class="title">AIML-sheet · Subject</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-    <link rel="shortcut icon" href="/logo.svg" />
-    <style>
-      .bg-animation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle 300px at 50% 50%, rgba(181, 232, 213, 0.15), transparent);
-        pointer-events: none;
-        z-index: -1;
-        transition: background 0.1s ease-out;
-      }
-
-      body.dark-mode .bg-animation {
-        background: radial-gradient(circle 200px at 50% 50%, rgba(181, 232, 213, 0.08), transparent);
-      }
-
-      /* Dark mode palette to mirror homepage redesign */
-      body.dark-mode {
-        background: radial-gradient(circle at 18% 22%, rgba(209, 75, 56, 0.08) 0, transparent 32%),
-                    radial-gradient(circle at 82% 18%, rgba(247, 216, 160, 0.06) 0, transparent 34%),
-                    #0b0909;
-        color: #f4e9d7;
-      }
-
-      body.dark-mode a {
-        color: #f7d8a0;
-      }
-
-      body.dark-mode a:hover {
-        color: #d14b38;
-      }
-
-      .theme-toggle {
-        position: fixed;
-        top: 1rem;
-        right: 1rem;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1.5px solid rgba(29, 78, 48, 0.2);
-        border-radius: 50px;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 1rem;
-        font-weight: 500;
-        color: var(--dark-green);
-        z-index: 100;
-      }
-
-      .github-link {
-        position: fixed;
-        top: 1rem;
-        right: 8.5rem;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1.5px solid rgba(29, 78, 48, 0.2);
-        border-radius: 50px;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: var(--dark-green);
-        font-weight: 500;
-        font-size: 0.95rem;
-        z-index: 101;
-      }
-
-      .github-link:hover {
-        background: rgba(255, 255, 255, 0.25);
-        border-color: rgba(29, 78, 48, 0.4);
-        transform: scale(1.02);
-      }
-
-      body.dark-mode .github-link {
-        background: rgba(45, 74, 62, 0.3);
-        border-color: rgba(117, 183, 152, 0.3);
-        color: #b8e6d5;
-      }
-
-      .theme-toggle:hover {
-        background: rgba(255, 255, 255, 0.25);
-        border-color: rgba(29, 78, 48, 0.4);
-        transform: scale(1.02);
-      }
-
-      body.dark-mode .theme-toggle {
-        background: rgba(45, 74, 62, 0.3);
-        border-color: rgba(117, 183, 152, 0.3);
-        color: #b8e6d5;
-      }
-
-      .theme-toggle #themeIcon {
-        display: inline-block;
-        animation: iconFloat 2s ease-in-out infinite;
-        font-size: 1.2rem;
-      }
-
-      @keyframes iconFloat {
-        0%, 100% {
-          transform: translateY(0px) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-2px) rotate(8deg);
-        }
-      }
-
-      body.dark-mode .theme-toggle #themeIcon {
-        animation: iconSpin 3s ease-in-out infinite;
-      }
-
-      @keyframes iconSpin {
-        0%, 100% {
-          transform: rotate(0deg) scale(1);
-        }
-        25% {
-          transform: rotate(-12deg) scale(1.05);
-        }
-        50% {
-          transform: rotate(0deg) scale(1);
-        }
-        75% {
-          transform: rotate(12deg) scale(1.05);
-        }
-      }
-
-      .pdf-preview-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .pdf-preview-modal.show {
-        display: flex;
-      }
-
-      .pdf-preview-container {
-        width: 90%;
-        height: 90%;
-        background: white;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-      }
-
-      .pdf-preview-header {
-        padding: 1rem;
-        border-bottom: 2px solid var(--dark-green);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .pdf-preview-header h3 {
-        margin: 0;
-        color: var(--dark-green);
-      }
-
-      .pdf-close-btn {
-        background: var(--dark-green);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      .pdf-close-btn:hover {
-        background: var(--forest-green);
-      }
-
-      .pdf-viewer {
-        flex: 1;
-        overflow: auto;
-      }
-
-      .pdf-viewer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-
-      .resource-link {
-        cursor: pointer;
-        color: var(--forest-green);
-        text-decoration: underline;
-        transition: all 0.2s ease;
-      }
-
-      .resource-link:hover {
-        color: var(--dark-green);
-        font-weight: bold;
-      }
-
-      body.dark-mode .github-link {
-        background: rgba(45, 74, 62, 0.3) !important;
-        border-color: rgba(117, 183, 152, 0.3) !important;
-        color: #b8e6d5 !important;
-      }
-
-      body.dark-mode .github-link:hover {
-        background: rgba(45, 74, 62, 0.5) !important;
-        color: #e0f5f0 !important;
-      }
-
-      @media (max-width: 768px) {
-        .pdf-preview-container {
-          width: 95%;
-          height: 85%;
-        }
-
-        .pdf-preview-header {
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        .pdf-preview-header h3 {
-          font-size: 1rem;
-        }
-      }
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop stop-color='%236c5dd3' offset='0%'/><stop stop-color='%23b58cff' offset='100%'/></linearGradient></defs><circle cx='50' cy='50' r='46' fill='url(%23g)'/><text x='50' y='57' font-size='44' text-anchor='middle' fill='%23fff' font-family='Trebuchet MS, sans-serif'>NV</text></svg>" />
   </head>
   <body>
-    <header>
-      <a href="https://github.com/devndesigner6/NeuralVault" target="_blank" class="github-link">
-        <svg height="18" width="18" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-        </svg>
-      </a>
-      <button class="theme-toggle" id="themeToggle">
-        <span id="themeIcon">🌙</span>
-        <span id="themeText">Dark</span>
-      </button>
-      <h1 class="title"></h1>
-    <hr />
-    </header>
-    <div class="resources">
-      <h2>Resouces:</h2>
-    </div>
-    <div class="table">
-      <h2>Overview:</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Syllabus</th>
-          </tr>
-        </thead>
-        <tbody id="unitTableBody"></tbody>
-      </table>
+    <div class="bg-animation"></div>
+
+    <div class="topbar">
+      <div class="brand-block">
+        <div class="logo-badge">NV</div>
+        <div class="brand-text">
+          <span class="brand-name">NeuralVault</span>
+          <span class="brand-sub">AIML-sheet</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="ghost-link" href="https://github.com/devndesigner6/NeuralVault" target="_blank" rel="noopener">Repo</a>
+        <button class="theme-toggle" id="themeToggle"><span id="themeIcon">🌙</span><span id="themeText">Dark</span></button>
+      </div>
     </div>
 
-    <div class="info">
-      <div id="unitInfo"></div>
-    </div>
-    
-    <!-- PDF Preview Modal -->
+    <main class="page-shell">
+      <div class="eyebrow">subject</div>
+      <h1 class="subject-title" id="subjectName">Loading…</h1>
+      <p class="meta" id="subjectMeta"></p>
+
+      <section class="section-card resources" id="resourcesSection" style="display: none;">
+        <h2>Resources</h2>
+        <div id="resourcesList"></div>
+      </section>
+
+      <section class="section-card" id="overviewSection">
+        <h2>Overview</h2>
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th class="syllabus-col">Syllabus</th>
+              </tr>
+            </thead>
+            <tbody id="unitTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section-card info" id="infoSection" style="display: none;">
+        <h3>Unit details</h3>
+        <div id="unitInfo"></div>
+      </section>
+    </main>
+
     <div class="pdf-preview-modal" id="pdfPreviewModal">
       <div class="pdf-preview-container">
         <div class="pdf-preview-header">
@@ -292,27 +65,16 @@
         <div class="pdf-viewer" id="pdfViewer"></div>
       </div>
     </div>
-    
-    <footer>
-      <hr>
-      <div>
-        <a href="../">Go to Home</a>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="../">Home</a>
+        <a href="https://github.com/devndesigner6/NeuralVault" target="_blank" rel="noopener">Repository</a>
       </div>
+      <p class="footer-note">aiml-sheet @2026</p>
     </footer>
-    <div class="bg-animation" id="bgAnimation"></div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      document.addEventListener('mousemove', function(e) {
-        var x = e.clientX / window.innerWidth * 100;
-        var y = e.clientY / window.innerHeight * 100;
-        var isDarkMode = document.body.classList.contains('dark-mode');
-        var glowSize = isDarkMode ? '200px' : '300px';
-        var glowIntensity = isDarkMode ? '0.08' : '0.15';
-        var glowColor = isDarkMode ? 'rgba(209, 75, 56, ' + glowIntensity + ')' : 'rgba(181, 232, 213, ' + glowIntensity + ')';
-        document.getElementById('bgAnimation').style.background = 
-          'radial-gradient(circle ' + glowSize + ' at ' + x + '% ' + y + '%, ' + glowColor + ', transparent)';
-      });
-    </script>
     <script src="./subject.js"></script>
   </body>
 </html>
