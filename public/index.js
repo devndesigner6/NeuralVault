@@ -3,24 +3,17 @@ $(document).ready(function () {
   let currentTrack = 'R22';
   let currentSelection = null;
 
-  function initDarkMode() {
-    const darkMode = localStorage.getItem('darkMode') === 'true';
-    if (darkMode) {
-      $('body').addClass('dark-mode');
-      $('#themeIcon').text('☀️');
-      $('#themeText').text('Light');
-    }
-  }
-
-  function setTheme(isDark) {
-    localStorage.setItem('darkMode', isDark);
-    $('#themeIcon').text(isDark ? '☀️' : '🌙');
-    $('#themeText').text(isDark ? 'Light' : 'Dark');
+  // Theme is always dark (black/white) - no toggle needed
+  // Keeping the button for future light mode implementation
+  function initTheme() {
+    // Always use dark theme
+    $('#themeIcon').text('◐');
+    $('#themeText').text('B/W');
   }
 
   $('#themeToggle').on('click', function () {
-    $('body').toggleClass('dark-mode');
-    setTheme($('body').hasClass('dark-mode'));
+    // Theme toggle disabled - always B/W theme
+    // Could be implemented for light mode in future
   });
 
   function renderSubjects(list) {
@@ -93,7 +86,7 @@ $(document).ready(function () {
 
   $.getJSON('subjects.json', function (data) {
     subjectsData = data;
-    initDarkMode();
+    initTheme();
     $('#filtersPanel').show();
     bindInteractions();
   }).fail(function () {
