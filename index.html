@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#000000" />
     <title>NeuralVault · Educational Resources</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link
       rel="shortcut icon"
       href="logo.svg"
@@ -13,46 +16,76 @@
     />
   </head>
   <body>
-    <!-- Animated Background -->
-    <div class="bg-animation" id="bgAnimation"></div>
-    
     <!-- Header -->
-    <header class="main-header">
-      <div class="brand-block">
-        <div class="logo-container" id="animatedLogo">
-          <div class="logo-sphere"></div>
+    <header class="header">
+      <div class="header-container">
+        <div class="brand">
+          <div class="logo">NV</div>
+          <div class="brand-name">NeuralVault</div>
         </div>
-        <div class="brand-text">
-          <span class="brand-name">NeuralVault</span>
-        </div>
-      </div>
-      <div class="header-actions">
-        <a class="nav-link" href="#">Meet Creator</a>
-        <button class="btn-secondary">Login</button>
-        <button class="btn-primary">Sign Up</button>
+        <nav class="nav">
+          <a href="https://github.com/devndesigner6/NeuralVault" target="_blank" class="nav-link">Repository</a>
+          <a href="https://github.com/devndesigner6/NeuralVault/issues" target="_blank" class="nav-link">Issues</a>
+        </nav>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="main-content">
-      <section class="hero-section">
-        <!-- Search Bar / Beta Tag -->
-        <div class="search-bar-container">
-          <div class="search-bar glass-card">
-            <span class="beta-tag">Beta</span>
-            <span class="search-text">Search AI-Powered Network</span>
-            <span class="search-arrow">→</span>
+    <main class="main">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Educational Resources</h1>
+          <p class="hero-description">Comprehensive academic materials for R22 curriculum. Browse, download, and access syllabi with precision.</p>
+        </div>
+      </section>
+
+      <!-- Filters Section -->
+      <section class="filters">
+        <div class="filters-container">
+          <div class="filter-group">
+            <label class="filter-label">Year</label>
+            <div class="filter-chips">
+              <button class="chip" data-year="1">Year 1</button>
+              <button class="chip" data-year="2">Year 2</button>
+              <button class="chip" data-year="3">Year 3</button>
+              <button class="chip" data-year="4">Year 4</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Semester</label>
+            <div class="filter-chips">
+              <button class="chip" data-sem="1">Sem 1</button>
+              <button class="chip" data-sem="2">Sem 2</button>
+            </div>
           </div>
         </div>
-        
-        <h1 class="headline">Turn Ideas into Reality with the Right People</h1>
-        <p class="tagline">Find teammates, co-founders, and projects that match your goals – powered by AI that connects you to people who help you build, learn, and grow.</p>
-        
-        <div class="cta-container">
-          <button class="btn-primary-large" id="joinBtn">Join the Network</button>
+      </section>
+
+      <!-- Subjects Grid -->
+      <section class="subjects">
+        <div class="subjects-container">
+          <div class="subjects-header">
+            <h2 class="section-title" id="subjectsTitle">All Subjects</h2>
+            <p class="section-subtitle" id="subjectsCount">Loading subjects...</p>
+          </div>
+          <div class="subjects-grid" id="subjectsGrid">
+            <div class="loading-state">Loading subjects...</div>
+          </div>
         </div>
       </section>
     </main>
+
+    <!-- Subject Modal for Syllabus -->
+    <div class="modal" id="syllabusModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modalTitle">Syllabus</h3>
+          <button class="modal-close" id="modalClose">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="index.js"></script>
